@@ -1,0 +1,11 @@
+resources:
+  pipelines:
+    bronze_pharma_pipeline:
+      name: bronze_pharma_pipeline
+      catalog: ${var.catalog}
+      schema: ${var.schema}
+      serverless: true
+      root_path: ../src/bronze_pharma_pipeline
+      libraries:
+        - glob:
+            include: ../src/bronze_pharma_pipeline/transformations/**

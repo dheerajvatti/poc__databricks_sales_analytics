@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+
+.databricks/
+.databricks-resources.json
+
+.vscode/
+.DS_Store
+
+.ai-dev-kit/

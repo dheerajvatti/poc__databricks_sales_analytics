@@ -1,0 +1,2845 @@
+{
+  "key": "pharma_distribution_landing",
+  "value": {
+    "manufacturers": [
+      {
+        "manufacturer_id": "MFG-001",
+        "manufacturer_name": "Manufacturer-1",
+        "country": "US",
+        "gmp_certified": true,
+        "created_at": "2026-01-15T10:00:48Z"
+      },
+      {
+        "manufacturer_id": "MFG-002",
+        "manufacturer_name": "Manufacturer-2",
+        "country": "DE",
+        "gmp_certified": true,
+        "created_at": "2025-03-13T03:43:54Z"
+      },
+      {
+        "manufacturer_id": "MFG-003",
+        "manufacturer_name": "Manufacturer-3",
+        "country": "US",
+        "gmp_certified": false,
+        "created_at": "2025-01-17T01:05:05Z"
+      }
+    ],
+    "products": [
+      {
+        "product_id": "PRD-0001",
+        "manufacturer_id": "MFG-001",
+        "product_name": "Atorvastatin-Brand-1",
+        "molecule": "atorvastatin",
+        "therapeutic_area": "Oncology",
+        "dosage_form": "tablet",
+        "strength": "150 mg",
+        "pack_size": 20,
+        "cold_chain_required": true,
+        "list_price": 1305.02
+      },
+      {
+        "product_id": "PRD-0002",
+        "manufacturer_id": "MFG-003",
+        "product_name": "Trastuzumab-Brand-2",
+        "molecule": "trastuzumab",
+        "therapeutic_area": "Oncology",
+        "dosage_form": "suspension",
+        "strength": "150 mg",
+        "pack_size": 30,
+        "cold_chain_required": false,
+        "list_price": 1521.23
+      },
+      {
+        "product_id": "PRD-0003",
+        "manufacturer_id": "MFG-001",
+        "product_name": "Omeprazole-Brand-3",
+        "molecule": "omeprazole",
+        "therapeutic_area": "Neurology",
+        "dosage_form": "injectable",
+        "strength": "50 mg",
+        "pack_size": 20,
+        "cold_chain_required": false,
+        "list_price": 1915.07
+      },
+      {
+        "product_id": "PRD-0004",
+        "manufacturer_id": "MFG-002",
+        "product_name": "Amoxicillin-Brand-4",
+        "molecule": "amoxicillin",
+        "therapeutic_area": "Cardiology",
+        "dosage_form": "suspension",
+        "strength": "10 mg",
+        "pack_size": 30,
+        "cold_chain_required": false,
+        "list_price": 1213.4
+      },
+      {
+        "product_id": "PRD-0005",
+        "manufacturer_id": "MFG-001",
+        "product_name": "Omeprazole-Brand-5",
+        "molecule": "omeprazole",
+        "therapeutic_area": "Neurology",
+        "dosage_form": "tablet",
+        "strength": "100 mg",
+        "pack_size": 10,
+        "cold_chain_required": true,
+        "list_price": 596.96
+      },
+      {
+        "product_id": "PRD-0006",
+        "manufacturer_id": "MFG-003",
+        "product_name": "Adalimumab-Brand-6",
+        "molecule": "adalimumab",
+        "therapeutic_area": "Endocrinology",
+        "dosage_form": "capsule",
+        "strength": "500 mg",
+        "pack_size": 10,
+        "cold_chain_required": false,
+        "list_price": 1327.61
+      },
+      {
+        "product_id": "PRD-0007",
+        "manufacturer_id": "MFG-002",
+        "product_name": "Amoxicillin-Brand-7",
+        "molecule": "amoxicillin",
+        "therapeutic_area": "Oncology",
+        "dosage_form": "tablet",
+        "strength": "100 mg",
+        "pack_size": 30,
+        "cold_chain_required": false,
+        "list_price": 1276.83
+      },
+      {
+        "product_id": "PRD-0008",
+        "manufacturer_id": "MFG-002",
+        "product_name": "Atorvastatin-Brand-8",
+        "molecule": "atorvastatin",
+        "therapeutic_area": "Endocrinology",
+        "dosage_form": "injectable",
+        "strength": "20 mg",
+        "pack_size": 30,
+        "cold_chain_required": true,
+        "list_price": 1874.26
+      },
+      {
+        "product_id": "PRD-0009",
+        "manufacturer_id": "MFG-003",
+        "product_name": "Amoxicillin-Brand-9",
+        "molecule": "amoxicillin",
+        "therapeutic_area": "Anti-Infectives",
+        "dosage_form": "capsule",
+        "strength": "150 mg",
+        "pack_size": 20,
+        "cold_chain_required": false,
+        "list_price": 932.59
+      },
+      {
+        "product_id": "PRD-0010",
+        "manufacturer_id": "MFG-002",
+        "product_name": "Omeprazole-Brand-10",
+        "molecule": "omeprazole",
+        "therapeutic_area": "Anti-Infectives",
+        "dosage_form": "capsule",
+        "strength": "500 mg",
+        "pack_size": 30,
+        "cold_chain_required": false,
+        "list_price": 469.66
+      }
+    ],
+    "distribution_centers": [
+      {
+        "dc_id": "DC-SO-01",
+        "dc_name": "Southeast Pharma DC 1",
+        "region": "SOUTHEAST",
+        "address": {
+          "street": "101 Logistics Park Dr",
+          "city": "Pittsburgh",
+          "state": "GA",
+          "postal_code": "15001",
+          "country": "US"
+        },
+        "temperature_zones": [
+          "ambient",
+          "cold_chain"
+        ]
+      },
+      {
+        "dc_id": "DC-MI-02",
+        "dc_name": "Midwest Pharma DC 2",
+        "region": "MIDWEST",
+        "address": {
+          "street": "102 Logistics Park Dr",
+          "city": "Pittsburgh",
+          "state": "OH",
+          "postal_code": "15002",
+          "country": "US"
+        },
+        "temperature_zones": [
+          "ambient",
+          "cold_chain"
+        ]
+      },
+      {
+        "dc_id": "DC-NO-03",
+        "dc_name": "Northeast Pharma DC 3",
+        "region": "NORTHEAST",
+        "address": {
+          "street": "103 Logistics Park Dr",
+          "city": "Atlanta",
+          "state": "OH",
+          "postal_code": "15003",
+          "country": "US"
+        },
+        "temperature_zones": [
+          "ambient",
+          "cold_chain"
+        ]
+      }
+    ],
+    "customers": [
+      {
+        "customer_id": "CUST-1001",
+        "customer_name": "Customer-1",
+        "customer_type": "WHOLESALER",
+        "region": "SOUTHEAST",
+        "credit_limit": 164712.96,
+        "is_340b_eligible": false,
+        "address": {
+          "street": "201 Healthway Ave",
+          "city": "Cleveland",
+          "state": "OH",
+          "postal_code": "14001",
+          "country": "US"
+        }
+      },
+      {
+        "customer_id": "CUST-1002",
+        "customer_name": "Customer-2",
+        "customer_type": "WHOLESALER",
+        "region": "MIDWEST",
+        "credit_limit": 184744.32,
+        "is_340b_eligible": false,
+        "address": {
+          "street": "202 Healthway Ave",
+          "city": "Chicago",
+          "state": "GA",
+          "postal_code": "14002",
+          "country": "US"
+        }
+      },
+      {
+        "customer_id": "CUST-1003",
+        "customer_name": "Customer-3",
+        "customer_type": "HOSPITAL",
+        "region": "NORTHEAST",
+        "credit_limit": 177381.57,
+        "is_340b_eligible": true,
+        "address": {
+          "street": "203 Healthway Ave",
+          "city": "Pittsburgh",
+          "state": "PA",
+          "postal_code": "14003",
+          "country": "US"
+        }
+      },
+      {
+        "customer_id": "CUST-1004",
+        "customer_name": "Customer-4",
+        "customer_type": "WHOLESALER",
+        "region": "NORTHEAST",
+        "credit_limit": 89995.5,
+        "is_340b_eligible": false,
+        "address": {
+          "street": "204 Healthway Ave",
+          "city": "Pittsburgh",
+          "state": "IL",
+          "postal_code": "14004",
+          "country": "US"
+        }
+      },
+      {
+        "customer_id": "CUST-1005",
+        "customer_name": "Customer-5",
+        "customer_type": "WHOLESALER",
+        "region": "SOUTHEAST",
+        "credit_limit": 299030.35,
+        "is_340b_eligible": false,
+        "address": {
+          "street": "205 Healthway Ave",
+          "city": "Pittsburgh",
+          "state": "PA",
+          "postal_code": "14005",
+          "country": "US"
+        }
+      },
+      {
+        "customer_id": "CUST-1006",
+        "customer_name": "Customer-6",
+        "customer_type": "WHOLESALER",
+        "region": "MIDWEST",
+        "credit_limit": 237719.45,
+        "is_340b_eligible": false,
+        "address": {
+          "street": "206 Healthway Ave",
+          "city": "Pittsburgh",
+          "state": "GA",
+          "postal_code": "14006",
+          "country": "US"
+        }
+      },
+      {
+        "customer_id": "CUST-1007",
+        "customer_name": "Customer-7",
+        "customer_type": "HOSPITAL",
+        "region": "SOUTHEAST",
+        "credit_limit": 163430.93,
+        "is_340b_eligible": false,
+        "address": {
+          "street": "207 Healthway Ave",
+          "city": "Cleveland",
+          "state": "PA",
+          "postal_code": "14007",
+          "country": "US"
+        }
+      },
+      {
+        "customer_id": "CUST-1008",
+        "customer_name": "Customer-8",
+        "customer_type": "RETAIL_PHARMACY",
+        "region": "MIDWEST",
+        "credit_limit": 260417.34,
+        "is_340b_eligible": true,
+        "address": {
+          "street": "208 Healthway Ave",
+          "city": "Cleveland",
+          "state": "GA",
+          "postal_code": "14008",
+          "country": "US"
+        }
+      }
+    ],
+    "sales_orders": [
+      {
+        "order_id": "SO-20260126-0001",
+        "order_date": "2026-01-26T05:52:54Z",
+        "dc_id": "DC-NO-03",
+        "customer_id": "CUST-1001",
+        "order_status": "CANCELLED",
+        "payment_terms": "NET_45",
+        "incoterm": "FOB",
+        "currency": "USD",
+        "order_total_amount": 14575.85,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0008",
+            "ordered_qty_packs": 1,
+            "confirmed_qty_packs": 1,
+            "unit_price": 1763.2,
+            "line_amount": 1763.2,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0004",
+            "ordered_qty_packs": 2,
+            "confirmed_qty_packs": 2,
+            "unit_price": 1203.5,
+            "line_amount": 2407.0,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "3",
+            "product_id": "PRD-0003",
+            "ordered_qty_packs": 5,
+            "confirmed_qty_packs": 5,
+            "unit_price": 2081.13,
+            "line_amount": 10405.65,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20260101-0002",
+        "order_date": "2026-01-01T11:20:57Z",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1006",
+        "order_status": "INVOICED",
+        "payment_terms": "NET_30",
+        "incoterm": "CIF",
+        "currency": "USD",
+        "order_total_amount": 36802.28,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0002",
+            "ordered_qty_packs": 8,
+            "confirmed_qty_packs": 8,
+            "unit_price": 1421.62,
+            "line_amount": 11372.96,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0004",
+            "ordered_qty_packs": 1,
+            "confirmed_qty_packs": 1,
+            "unit_price": 1222.84,
+            "line_amount": 1222.84,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "3",
+            "product_id": "PRD-0005",
+            "ordered_qty_packs": 16,
+            "confirmed_qty_packs": 16,
+            "unit_price": 527.16,
+            "line_amount": 8434.56,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "4",
+            "product_id": "PRD-0008",
+            "ordered_qty_packs": 8,
+            "confirmed_qty_packs": 8,
+            "unit_price": 1971.49,
+            "line_amount": 15771.92,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20260214-0003",
+        "order_date": "2026-02-14T03:58:42Z",
+        "dc_id": "DC-SO-01",
+        "customer_id": "CUST-1004",
+        "order_status": "ALLOCATED",
+        "payment_terms": "NET_30",
+        "incoterm": "CIF",
+        "currency": "USD",
+        "order_total_amount": 60648.87,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0003",
+            "ordered_qty_packs": 14,
+            "confirmed_qty_packs": 14,
+            "unit_price": 1849.3,
+            "line_amount": 25890.2,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0009",
+            "ordered_qty_packs": 4,
+            "confirmed_qty_packs": 4,
+            "unit_price": 1025.68,
+            "line_amount": 4102.72,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "3",
+            "product_id": "PRD-0004",
+            "ordered_qty_packs": 6,
+            "confirmed_qty_packs": 6,
+            "unit_price": 1177.41,
+            "line_amount": 7064.46,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "4",
+            "product_id": "PRD-0003",
+            "ordered_qty_packs": 13,
+            "confirmed_qty_packs": 13,
+            "unit_price": 1814.73,
+            "line_amount": 23591.49,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20250130-0004",
+        "order_date": "2025-01-30T21:05:14Z",
+        "dc_id": "DC-NO-03",
+        "customer_id": "CUST-1001",
+        "order_status": "SHIPPED",
+        "payment_terms": "NET_45",
+        "incoterm": "FOB",
+        "currency": "USD",
+        "order_total_amount": 26775.18,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0001",
+            "ordered_qty_packs": 19,
+            "confirmed_qty_packs": 19,
+            "unit_price": 1409.22,
+            "line_amount": 26775.18,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20250726-0005",
+        "order_date": "2025-07-26T04:21:53Z",
+        "dc_id": "DC-NO-03",
+        "customer_id": "CUST-1004",
+        "order_status": "CANCELLED",
+        "payment_terms": "NET_15",
+        "incoterm": "CIF",
+        "currency": "USD",
+        "order_total_amount": 1403.22,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0010",
+            "ordered_qty_packs": 3,
+            "confirmed_qty_packs": 3,
+            "unit_price": 467.74,
+            "line_amount": 1403.22,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20250503-0006",
+        "order_date": "2025-05-03T09:40:14Z",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1003",
+        "order_status": "SHIPPED",
+        "payment_terms": "NET_15",
+        "incoterm": "CIF",
+        "currency": "USD",
+        "order_total_amount": 24662.68,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0006",
+            "ordered_qty_packs": 3,
+            "confirmed_qty_packs": 3,
+            "unit_price": 1334.63,
+            "line_amount": 4003.89,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0009",
+            "ordered_qty_packs": 7,
+            "confirmed_qty_packs": 7,
+            "unit_price": 823.58,
+            "line_amount": 5765.06,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "3",
+            "product_id": "PRD-0004",
+            "ordered_qty_packs": 12,
+            "confirmed_qty_packs": 12,
+            "unit_price": 1164.31,
+            "line_amount": 13971.72,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "4",
+            "product_id": "PRD-0009",
+            "ordered_qty_packs": 1,
+            "confirmed_qty_packs": 1,
+            "unit_price": 922.01,
+            "line_amount": 922.01,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20251106-0007",
+        "order_date": "2025-11-06T07:40:07Z",
+        "dc_id": "DC-NO-03",
+        "customer_id": "CUST-1006",
+        "order_status": "ALLOCATED",
+        "payment_terms": "NET_15",
+        "incoterm": "FOB",
+        "currency": "USD",
+        "order_total_amount": 67710.87,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0009",
+            "ordered_qty_packs": 16,
+            "confirmed_qty_packs": 16,
+            "unit_price": 1004.44,
+            "line_amount": 16071.04,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0003",
+            "ordered_qty_packs": 15,
+            "confirmed_qty_packs": 15,
+            "unit_price": 1832.57,
+            "line_amount": 27488.55,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "3",
+            "product_id": "PRD-0006",
+            "ordered_qty_packs": 19,
+            "confirmed_qty_packs": 19,
+            "unit_price": 1271.12,
+            "line_amount": 24151.28,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20260319-0008",
+        "order_date": "2026-03-19T05:54:59Z",
+        "dc_id": "DC-SO-01",
+        "customer_id": "CUST-1007",
+        "order_status": "CREATED",
+        "payment_terms": "NET_15",
+        "incoterm": "FOB",
+        "currency": "USD",
+        "order_total_amount": 40867.91,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0006",
+            "ordered_qty_packs": 14,
+            "confirmed_qty_packs": 14,
+            "unit_price": 1415.25,
+            "line_amount": 19813.5,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0002",
+            "ordered_qty_packs": 13,
+            "confirmed_qty_packs": 13,
+            "unit_price": 1619.57,
+            "line_amount": 21054.41,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20250113-0009",
+        "order_date": "2025-01-13T07:01:53Z",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1006",
+        "order_status": "SHIPPED",
+        "payment_terms": "NET_15",
+        "incoterm": "FOB",
+        "currency": "USD",
+        "order_total_amount": 6804.72,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0005",
+            "ordered_qty_packs": 12,
+            "confirmed_qty_packs": 12,
+            "unit_price": 567.06,
+            "line_amount": 6804.72,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20250225-0010",
+        "order_date": "2025-02-25T21:43:13Z",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1006",
+        "order_status": "SHIPPED",
+        "payment_terms": "NET_45",
+        "incoterm": "CIF",
+        "currency": "USD",
+        "order_total_amount": 51450.54,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0010",
+            "ordered_qty_packs": 17,
+            "confirmed_qty_packs": 17,
+            "unit_price": 504.83,
+            "line_amount": 8582.11,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0002",
+            "ordered_qty_packs": 11,
+            "confirmed_qty_packs": 11,
+            "unit_price": 1545.34,
+            "line_amount": 16998.74,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "3",
+            "product_id": "PRD-0006",
+            "ordered_qty_packs": 13,
+            "confirmed_qty_packs": 13,
+            "unit_price": 1312.48,
+            "line_amount": 17062.24,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "4",
+            "product_id": "PRD-0010",
+            "ordered_qty_packs": 19,
+            "confirmed_qty_packs": 19,
+            "unit_price": 463.55,
+            "line_amount": 8807.45,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20251204-0011",
+        "order_date": "2025-12-04T03:05:14Z",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1006",
+        "order_status": "CREATED",
+        "payment_terms": "NET_45",
+        "incoterm": "FOB",
+        "currency": "USD",
+        "order_total_amount": 29079.49,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0005",
+            "ordered_qty_packs": 8,
+            "confirmed_qty_packs": 8,
+            "unit_price": 529.41,
+            "line_amount": 4235.28,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0007",
+            "ordered_qty_packs": 19,
+            "confirmed_qty_packs": 19,
+            "unit_price": 1307.59,
+            "line_amount": 24844.21,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20260120-0012",
+        "order_date": "2026-01-20T03:52:50Z",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1004",
+        "order_status": "ALLOCATED",
+        "payment_terms": "NET_45",
+        "incoterm": "CIF",
+        "currency": "USD",
+        "order_total_amount": 81725.03,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0001",
+            "ordered_qty_packs": 18,
+            "confirmed_qty_packs": 18,
+            "unit_price": 1386.04,
+            "line_amount": 24948.72,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0009",
+            "ordered_qty_packs": 18,
+            "confirmed_qty_packs": 18,
+            "unit_price": 1014.2,
+            "line_amount": 18255.6,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "3",
+            "product_id": "PRD-0009",
+            "ordered_qty_packs": 14,
+            "confirmed_qty_packs": 14,
+            "unit_price": 920.44,
+            "line_amount": 12886.16,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "4",
+            "product_id": "PRD-0008",
+            "ordered_qty_packs": 15,
+            "confirmed_qty_packs": 15,
+            "unit_price": 1708.97,
+            "line_amount": 25634.55,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20250501-0013",
+        "order_date": "2025-05-01T09:53:34Z",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1006",
+        "order_status": "CANCELLED",
+        "payment_terms": "NET_30",
+        "incoterm": "CIF",
+        "currency": "USD",
+        "order_total_amount": 9800.25,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0003",
+            "ordered_qty_packs": 5,
+            "confirmed_qty_packs": 5,
+            "unit_price": 1960.05,
+            "line_amount": 9800.25,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20251005-0014",
+        "order_date": "2025-10-05T16:57:49Z",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1001",
+        "order_status": "ALLOCATED",
+        "payment_terms": "NET_30",
+        "incoterm": "FOB",
+        "currency": "USD",
+        "order_total_amount": 59238.93,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0007",
+            "ordered_qty_packs": 19,
+            "confirmed_qty_packs": 18,
+            "unit_price": 1358.78,
+            "line_amount": 24458.04,
+            "backorder_flag": true
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0001",
+            "ordered_qty_packs": 12,
+            "confirmed_qty_packs": 12,
+            "unit_price": 1236.5,
+            "line_amount": 14838.0,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "3",
+            "product_id": "PRD-0009",
+            "ordered_qty_packs": 18,
+            "confirmed_qty_packs": 18,
+            "unit_price": 1002.02,
+            "line_amount": 18036.36,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "4",
+            "product_id": "PRD-0008",
+            "ordered_qty_packs": 1,
+            "confirmed_qty_packs": 1,
+            "unit_price": 1906.53,
+            "line_amount": 1906.53,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20251001-0015",
+        "order_date": "2025-10-01T00:58:54Z",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1001",
+        "order_status": "CREATED",
+        "payment_terms": "NET_30",
+        "incoterm": "FOB",
+        "currency": "USD",
+        "order_total_amount": 49985.65,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0003",
+            "ordered_qty_packs": 15,
+            "confirmed_qty_packs": 15,
+            "unit_price": 1752.36,
+            "line_amount": 26285.4,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0006",
+            "ordered_qty_packs": 13,
+            "confirmed_qty_packs": 13,
+            "unit_price": 1444.18,
+            "line_amount": 18774.34,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "3",
+            "product_id": "PRD-0008",
+            "ordered_qty_packs": 1,
+            "confirmed_qty_packs": 1,
+            "unit_price": 1617.53,
+            "line_amount": 1617.53,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "4",
+            "product_id": "PRD-0002",
+            "ordered_qty_packs": 2,
+            "confirmed_qty_packs": 2,
+            "unit_price": 1654.19,
+            "line_amount": 3308.38,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20251016-0016",
+        "order_date": "2025-10-16T07:56:09Z",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1005",
+        "order_status": "SHIPPED",
+        "payment_terms": "NET_15",
+        "incoterm": "CIF",
+        "currency": "USD",
+        "order_total_amount": 17834.68,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0010",
+            "ordered_qty_packs": 20,
+            "confirmed_qty_packs": 16,
+            "unit_price": 490.54,
+            "line_amount": 7848.64,
+            "backorder_flag": true
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0007",
+            "ordered_qty_packs": 13,
+            "confirmed_qty_packs": 9,
+            "unit_price": 1109.56,
+            "line_amount": 9986.04,
+            "backorder_flag": true
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20250808-0017",
+        "order_date": "2025-08-08T13:29:31Z",
+        "dc_id": "DC-SO-01",
+        "customer_id": "CUST-1006",
+        "order_status": "CREATED",
+        "payment_terms": "NET_45",
+        "incoterm": "CIF",
+        "currency": "USD",
+        "order_total_amount": 52605.66,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0008",
+            "ordered_qty_packs": 4,
+            "confirmed_qty_packs": 4,
+            "unit_price": 1762.83,
+            "line_amount": 7051.32,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0003",
+            "ordered_qty_packs": 14,
+            "confirmed_qty_packs": 14,
+            "unit_price": 1877.6,
+            "line_amount": 26286.4,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "3",
+            "product_id": "PRD-0009",
+            "ordered_qty_packs": 16,
+            "confirmed_qty_packs": 16,
+            "unit_price": 985.22,
+            "line_amount": 15763.52,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "4",
+            "product_id": "PRD-0004",
+            "ordered_qty_packs": 3,
+            "confirmed_qty_packs": 3,
+            "unit_price": 1168.14,
+            "line_amount": 3504.42,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20250622-0018",
+        "order_date": "2025-06-22T01:02:41Z",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1006",
+        "order_status": "ALLOCATED",
+        "payment_terms": "NET_30",
+        "incoterm": "CIF",
+        "currency": "USD",
+        "order_total_amount": 56453.56,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0004",
+            "ordered_qty_packs": 12,
+            "confirmed_qty_packs": 12,
+            "unit_price": 1134.63,
+            "line_amount": 13615.56,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0005",
+            "ordered_qty_packs": 18,
+            "confirmed_qty_packs": 18,
+            "unit_price": 648.9,
+            "line_amount": 11680.2,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "3",
+            "product_id": "PRD-0008",
+            "ordered_qty_packs": 16,
+            "confirmed_qty_packs": 16,
+            "unit_price": 1601.2,
+            "line_amount": 25619.2,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "4",
+            "product_id": "PRD-0010",
+            "ordered_qty_packs": 12,
+            "confirmed_qty_packs": 12,
+            "unit_price": 461.55,
+            "line_amount": 5538.6,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20260105-0019",
+        "order_date": "2026-01-05T07:00:42Z",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1002",
+        "order_status": "CANCELLED",
+        "payment_terms": "NET_45",
+        "incoterm": "FOB",
+        "currency": "USD",
+        "order_total_amount": 10410.83,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0004",
+            "ordered_qty_packs": 7,
+            "confirmed_qty_packs": 7,
+            "unit_price": 1115.27,
+            "line_amount": 7806.89,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0010",
+            "ordered_qty_packs": 10,
+            "confirmed_qty_packs": 6,
+            "unit_price": 433.99,
+            "line_amount": 2603.94,
+            "backorder_flag": true
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20250521-0020",
+        "order_date": "2025-05-21T01:39:25Z",
+        "dc_id": "DC-SO-01",
+        "customer_id": "CUST-1005",
+        "order_status": "ALLOCATED",
+        "payment_terms": "NET_45",
+        "incoterm": "CIF",
+        "currency": "USD",
+        "order_total_amount": 36507.89,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0002",
+            "ordered_qty_packs": 1,
+            "confirmed_qty_packs": 1,
+            "unit_price": 1471.56,
+            "line_amount": 1471.56,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0001",
+            "ordered_qty_packs": 9,
+            "confirmed_qty_packs": 1,
+            "unit_price": 1146.49,
+            "line_amount": 1146.49,
+            "backorder_flag": true
+          },
+          {
+            "line_id": "3",
+            "product_id": "PRD-0001",
+            "ordered_qty_packs": 5,
+            "confirmed_qty_packs": 5,
+            "unit_price": 1292.9,
+            "line_amount": 6464.5,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "4",
+            "product_id": "PRD-0002",
+            "ordered_qty_packs": 18,
+            "confirmed_qty_packs": 18,
+            "unit_price": 1523.63,
+            "line_amount": 27425.34,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20251019-0021",
+        "order_date": "2025-10-19T22:36:39Z",
+        "dc_id": "DC-SO-01",
+        "customer_id": "CUST-1002",
+        "order_status": "ALLOCATED",
+        "payment_terms": "NET_30",
+        "incoterm": "FOB",
+        "currency": "USD",
+        "order_total_amount": 18881.28,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0005",
+            "ordered_qty_packs": 3,
+            "confirmed_qty_packs": 3,
+            "unit_price": 533.36,
+            "line_amount": 1600.08,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0008",
+            "ordered_qty_packs": 10,
+            "confirmed_qty_packs": 10,
+            "unit_price": 1728.12,
+            "line_amount": 17281.2,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20250131-0022",
+        "order_date": "2025-01-31T06:02:27Z",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1005",
+        "order_status": "INVOICED",
+        "payment_terms": "NET_15",
+        "incoterm": "FOB",
+        "currency": "USD",
+        "order_total_amount": 20348.3,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0008",
+            "ordered_qty_packs": 10,
+            "confirmed_qty_packs": 10,
+            "unit_price": 2034.83,
+            "line_amount": 20348.3,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20250428-0023",
+        "order_date": "2025-04-28T20:56:32Z",
+        "dc_id": "DC-NO-03",
+        "customer_id": "CUST-1001",
+        "order_status": "SHIPPED",
+        "payment_terms": "NET_15",
+        "incoterm": "CIF",
+        "currency": "USD",
+        "order_total_amount": 29432.48,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0003",
+            "ordered_qty_packs": 16,
+            "confirmed_qty_packs": 16,
+            "unit_price": 1839.53,
+            "line_amount": 29432.48,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20250618-0024",
+        "order_date": "2025-06-18T14:59:15Z",
+        "dc_id": "DC-NO-03",
+        "customer_id": "CUST-1008",
+        "order_status": "SHIPPED",
+        "payment_terms": "NET_45",
+        "incoterm": "FOB",
+        "currency": "USD",
+        "order_total_amount": 37439.32,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0009",
+            "ordered_qty_packs": 2,
+            "confirmed_qty_packs": 2,
+            "unit_price": 866.03,
+            "line_amount": 1732.06,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0007",
+            "ordered_qty_packs": 17,
+            "confirmed_qty_packs": 17,
+            "unit_price": 1085.67,
+            "line_amount": 18456.39,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "3",
+            "product_id": "PRD-0001",
+            "ordered_qty_packs": 7,
+            "confirmed_qty_packs": 7,
+            "unit_price": 1312.4,
+            "line_amount": 9186.8,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "4",
+            "product_id": "PRD-0001",
+            "ordered_qty_packs": 7,
+            "confirmed_qty_packs": 7,
+            "unit_price": 1152.01,
+            "line_amount": 8064.07,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20250217-0025",
+        "order_date": "2025-02-17T08:10:51Z",
+        "dc_id": "DC-SO-01",
+        "customer_id": "CUST-1008",
+        "order_status": "CREATED",
+        "payment_terms": "NET_15",
+        "incoterm": "FOB",
+        "currency": "USD",
+        "order_total_amount": 34428.65,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0008",
+            "ordered_qty_packs": 10,
+            "confirmed_qty_packs": 10,
+            "unit_price": 1721.24,
+            "line_amount": 17212.4,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0004",
+            "ordered_qty_packs": 15,
+            "confirmed_qty_packs": 15,
+            "unit_price": 1147.75,
+            "line_amount": 17216.25,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20250522-0026",
+        "order_date": "2025-05-22T15:06:27Z",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1005",
+        "order_status": "CREATED",
+        "payment_terms": "NET_30",
+        "incoterm": "FOB",
+        "currency": "USD",
+        "order_total_amount": 43737.17,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0005",
+            "ordered_qty_packs": 19,
+            "confirmed_qty_packs": 19,
+            "unit_price": 605.91,
+            "line_amount": 11512.29,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0008",
+            "ordered_qty_packs": 12,
+            "confirmed_qty_packs": 12,
+            "unit_price": 1950.58,
+            "line_amount": 23406.96,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "3",
+            "product_id": "PRD-0004",
+            "ordered_qty_packs": 8,
+            "confirmed_qty_packs": 8,
+            "unit_price": 1102.24,
+            "line_amount": 8817.92,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20250911-0027",
+        "order_date": "2025-09-11T01:20:52Z",
+        "dc_id": "DC-SO-01",
+        "customer_id": "CUST-1006",
+        "order_status": "CREATED",
+        "payment_terms": "NET_15",
+        "incoterm": "FOB",
+        "currency": "USD",
+        "order_total_amount": 78431.99,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0002",
+            "ordered_qty_packs": 17,
+            "confirmed_qty_packs": 16,
+            "unit_price": 1567.8,
+            "line_amount": 25084.8,
+            "backorder_flag": true
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0003",
+            "ordered_qty_packs": 3,
+            "confirmed_qty_packs": 3,
+            "unit_price": 2091.83,
+            "line_amount": 6275.49,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "3",
+            "product_id": "PRD-0002",
+            "ordered_qty_packs": 11,
+            "confirmed_qty_packs": 11,
+            "unit_price": 1619.86,
+            "line_amount": 17818.46,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "4",
+            "product_id": "PRD-0008",
+            "ordered_qty_packs": 18,
+            "confirmed_qty_packs": 18,
+            "unit_price": 1625.18,
+            "line_amount": 29253.24,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20250811-0028",
+        "order_date": "2025-08-11T03:35:03Z",
+        "dc_id": "DC-NO-03",
+        "customer_id": "CUST-1002",
+        "order_status": "INVOICED",
+        "payment_terms": "NET_45",
+        "incoterm": "FOB",
+        "currency": "USD",
+        "order_total_amount": 22339.05,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0005",
+            "ordered_qty_packs": 1,
+            "confirmed_qty_packs": 1,
+            "unit_price": 626.23,
+            "line_amount": 626.23,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0007",
+            "ordered_qty_packs": 19,
+            "confirmed_qty_packs": 19,
+            "unit_price": 1142.78,
+            "line_amount": 21712.82,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20260216-0029",
+        "order_date": "2026-02-16T16:56:21Z",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1003",
+        "order_status": "CREATED",
+        "payment_terms": "NET_15",
+        "incoterm": "CIF",
+        "currency": "USD",
+        "order_total_amount": 55127.23,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0006",
+            "ordered_qty_packs": 19,
+            "confirmed_qty_packs": 19,
+            "unit_price": 1447.77,
+            "line_amount": 27507.63,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0005",
+            "ordered_qty_packs": 7,
+            "confirmed_qty_packs": 0,
+            "unit_price": 579.53,
+            "line_amount": 0.0,
+            "backorder_flag": true
+          },
+          {
+            "line_id": "3",
+            "product_id": "PRD-0005",
+            "ordered_qty_packs": 1,
+            "confirmed_qty_packs": 0,
+            "unit_price": 548.38,
+            "line_amount": 0.0,
+            "backorder_flag": true
+          },
+          {
+            "line_id": "4",
+            "product_id": "PRD-0001",
+            "ordered_qty_packs": 20,
+            "confirmed_qty_packs": 20,
+            "unit_price": 1380.98,
+            "line_amount": 27619.6,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20250423-0030",
+        "order_date": "2025-04-23T23:10:42Z",
+        "dc_id": "DC-SO-01",
+        "customer_id": "CUST-1005",
+        "order_status": "ALLOCATED",
+        "payment_terms": "NET_30",
+        "incoterm": "CIF",
+        "currency": "USD",
+        "order_total_amount": 11201.5,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0001",
+            "ordered_qty_packs": 10,
+            "confirmed_qty_packs": 10,
+            "unit_price": 1120.15,
+            "line_amount": 11201.5,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20250929-0031",
+        "order_date": "2025-09-29T18:16:11Z",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1003",
+        "order_status": "SHIPPED",
+        "payment_terms": "NET_45",
+        "incoterm": "FOB",
+        "currency": "USD",
+        "order_total_amount": 43915.56,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0005",
+            "ordered_qty_packs": 11,
+            "confirmed_qty_packs": 11,
+            "unit_price": 577.31,
+            "line_amount": 6350.41,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0007",
+            "ordered_qty_packs": 18,
+            "confirmed_qty_packs": 18,
+            "unit_price": 1337.7,
+            "line_amount": 24078.6,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "3",
+            "product_id": "PRD-0005",
+            "ordered_qty_packs": 19,
+            "confirmed_qty_packs": 19,
+            "unit_price": 602.71,
+            "line_amount": 11451.49,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "4",
+            "product_id": "PRD-0008",
+            "ordered_qty_packs": 1,
+            "confirmed_qty_packs": 1,
+            "unit_price": 2035.06,
+            "line_amount": 2035.06,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20250313-0032",
+        "order_date": "2025-03-13T01:39:03Z",
+        "dc_id": "DC-SO-01",
+        "customer_id": "CUST-1005",
+        "order_status": "INVOICED",
+        "payment_terms": "NET_45",
+        "incoterm": "CIF",
+        "currency": "USD",
+        "order_total_amount": 10757.12,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0002",
+            "ordered_qty_packs": 8,
+            "confirmed_qty_packs": 8,
+            "unit_price": 1344.64,
+            "line_amount": 10757.12,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20251112-0033",
+        "order_date": "2025-11-12T14:51:32Z",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1001",
+        "order_status": "SHIPPED",
+        "payment_terms": "NET_45",
+        "incoterm": "FOB",
+        "currency": "USD",
+        "order_total_amount": 4146.0,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0008",
+            "ordered_qty_packs": 15,
+            "confirmed_qty_packs": 1,
+            "unit_price": 1763.06,
+            "line_amount": 1763.06,
+            "backorder_flag": true
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0006",
+            "ordered_qty_packs": 2,
+            "confirmed_qty_packs": 2,
+            "unit_price": 1191.47,
+            "line_amount": 2382.94,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20250205-0034",
+        "order_date": "2025-02-05T20:10:41Z",
+        "dc_id": "DC-SO-01",
+        "customer_id": "CUST-1004",
+        "order_status": "ALLOCATED",
+        "payment_terms": "NET_15",
+        "incoterm": "CIF",
+        "currency": "USD",
+        "order_total_amount": 49108.81,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0003",
+            "ordered_qty_packs": 20,
+            "confirmed_qty_packs": 20,
+            "unit_price": 2038.79,
+            "line_amount": 40775.8,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0002",
+            "ordered_qty_packs": 1,
+            "confirmed_qty_packs": 1,
+            "unit_price": 1429.29,
+            "line_amount": 1429.29,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "3",
+            "product_id": "PRD-0001",
+            "ordered_qty_packs": 6,
+            "confirmed_qty_packs": 6,
+            "unit_price": 1150.62,
+            "line_amount": 6903.72,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20250915-0035",
+        "order_date": "2025-09-15T08:03:58Z",
+        "dc_id": "DC-NO-03",
+        "customer_id": "CUST-1001",
+        "order_status": "CANCELLED",
+        "payment_terms": "NET_45",
+        "incoterm": "CIF",
+        "currency": "USD",
+        "order_total_amount": 38067.26,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0008",
+            "ordered_qty_packs": 1,
+            "confirmed_qty_packs": 1,
+            "unit_price": 1817.56,
+            "line_amount": 1817.56,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0008",
+            "ordered_qty_packs": 15,
+            "confirmed_qty_packs": 15,
+            "unit_price": 1630.98,
+            "line_amount": 24464.7,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "3",
+            "product_id": "PRD-0005",
+            "ordered_qty_packs": 20,
+            "confirmed_qty_packs": 20,
+            "unit_price": 589.25,
+            "line_amount": 11785.0,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20250821-0036",
+        "order_date": "2025-08-21T18:24:23Z",
+        "dc_id": "DC-NO-03",
+        "customer_id": "CUST-1007",
+        "order_status": "CREATED",
+        "payment_terms": "NET_30",
+        "incoterm": "CIF",
+        "currency": "USD",
+        "order_total_amount": 6998.32,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0009",
+            "ordered_qty_packs": 7,
+            "confirmed_qty_packs": 7,
+            "unit_price": 999.76,
+            "line_amount": 6998.32,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20260109-0037",
+        "order_date": "2026-01-09T03:27:43Z",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1007",
+        "order_status": "SHIPPED",
+        "payment_terms": "NET_45",
+        "incoterm": "FOB",
+        "currency": "USD",
+        "order_total_amount": 34690.12,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0006",
+            "ordered_qty_packs": 5,
+            "confirmed_qty_packs": 5,
+            "unit_price": 1285.88,
+            "line_amount": 6429.4,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0006",
+            "ordered_qty_packs": 5,
+            "confirmed_qty_packs": 5,
+            "unit_price": 1323.12,
+            "line_amount": 6615.6,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "3",
+            "product_id": "PRD-0002",
+            "ordered_qty_packs": 14,
+            "confirmed_qty_packs": 14,
+            "unit_price": 1546.08,
+            "line_amount": 21645.12,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20251104-0038",
+        "order_date": "2025-11-04T11:22:33Z",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1002",
+        "order_status": "CANCELLED",
+        "payment_terms": "NET_45",
+        "incoterm": "FOB",
+        "currency": "USD",
+        "order_total_amount": 37731.66,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0003",
+            "ordered_qty_packs": 16,
+            "confirmed_qty_packs": 16,
+            "unit_price": 1679.62,
+            "line_amount": 26873.92,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0005",
+            "ordered_qty_packs": 19,
+            "confirmed_qty_packs": 19,
+            "unit_price": 571.46,
+            "line_amount": 10857.74,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20251108-0039",
+        "order_date": "2025-11-08T23:57:03Z",
+        "dc_id": "DC-NO-03",
+        "customer_id": "CUST-1005",
+        "order_status": "CREATED",
+        "payment_terms": "NET_30",
+        "incoterm": "FOB",
+        "currency": "USD",
+        "order_total_amount": 5895.58,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0005",
+            "ordered_qty_packs": 10,
+            "confirmed_qty_packs": 4,
+            "unit_price": 508.33,
+            "line_amount": 2033.32,
+            "backorder_flag": true
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0007",
+            "ordered_qty_packs": 3,
+            "confirmed_qty_packs": 3,
+            "unit_price": 1287.42,
+            "line_amount": 3862.26,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20250709-0040",
+        "order_date": "2025-07-09T11:20:46Z",
+        "dc_id": "DC-NO-03",
+        "customer_id": "CUST-1006",
+        "order_status": "CANCELLED",
+        "payment_terms": "NET_45",
+        "incoterm": "CIF",
+        "currency": "USD",
+        "order_total_amount": 6554.2,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0001",
+            "ordered_qty_packs": 5,
+            "confirmed_qty_packs": 5,
+            "unit_price": 1310.84,
+            "line_amount": 6554.2,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20250906-0041",
+        "order_date": "2025-09-06T22:06:10Z",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1007",
+        "order_status": "SHIPPED",
+        "payment_terms": "NET_30",
+        "incoterm": "CIF",
+        "currency": "USD",
+        "order_total_amount": 12122.84,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0009",
+            "ordered_qty_packs": 4,
+            "confirmed_qty_packs": 4,
+            "unit_price": 818.56,
+            "line_amount": 3274.24,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0009",
+            "ordered_qty_packs": 10,
+            "confirmed_qty_packs": 10,
+            "unit_price": 884.86,
+            "line_amount": 8848.6,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20250308-0042",
+        "order_date": "2025-03-08T13:50:34Z",
+        "dc_id": "DC-NO-03",
+        "customer_id": "CUST-1004",
+        "order_status": "CANCELLED",
+        "payment_terms": "NET_45",
+        "incoterm": "FOB",
+        "currency": "USD",
+        "order_total_amount": 41631.1,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0002",
+            "ordered_qty_packs": 13,
+            "confirmed_qty_packs": 13,
+            "unit_price": 1309.13,
+            "line_amount": 17018.69,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0007",
+            "ordered_qty_packs": 14,
+            "confirmed_qty_packs": 14,
+            "unit_price": 1214.59,
+            "line_amount": 17004.26,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "3",
+            "product_id": "PRD-0010",
+            "ordered_qty_packs": 15,
+            "confirmed_qty_packs": 15,
+            "unit_price": 507.21,
+            "line_amount": 7608.15,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20250722-0043",
+        "order_date": "2025-07-22T11:17:48Z",
+        "dc_id": "DC-NO-03",
+        "customer_id": "CUST-1006",
+        "order_status": "ALLOCATED",
+        "payment_terms": "NET_15",
+        "incoterm": "CIF",
+        "currency": "USD",
+        "order_total_amount": 39096.54,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0003",
+            "ordered_qty_packs": 3,
+            "confirmed_qty_packs": 3,
+            "unit_price": 1682.4,
+            "line_amount": 5047.2,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0006",
+            "ordered_qty_packs": 12,
+            "confirmed_qty_packs": 12,
+            "unit_price": 1400.28,
+            "line_amount": 16803.36,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "3",
+            "product_id": "PRD-0003",
+            "ordered_qty_packs": 9,
+            "confirmed_qty_packs": 9,
+            "unit_price": 1916.22,
+            "line_amount": 17245.98,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20260319-0044",
+        "order_date": "2026-03-19T22:50:10Z",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1003",
+        "order_status": "INVOICED",
+        "payment_terms": "NET_15",
+        "incoterm": "CIF",
+        "currency": "USD",
+        "order_total_amount": 29493.75,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0008",
+            "ordered_qty_packs": 15,
+            "confirmed_qty_packs": 15,
+            "unit_price": 1966.25,
+            "line_amount": 29493.75,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20251127-0045",
+        "order_date": "2025-11-27T03:17:15Z",
+        "dc_id": "DC-NO-03",
+        "customer_id": "CUST-1007",
+        "order_status": "INVOICED",
+        "payment_terms": "NET_15",
+        "incoterm": "CIF",
+        "currency": "USD",
+        "order_total_amount": 33131.82,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0008",
+            "ordered_qty_packs": 19,
+            "confirmed_qty_packs": 19,
+            "unit_price": 1743.78,
+            "line_amount": 33131.82,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20250121-0046",
+        "order_date": "2025-01-21T09:01:12Z",
+        "dc_id": "DC-NO-03",
+        "customer_id": "CUST-1008",
+        "order_status": "INVOICED",
+        "payment_terms": "NET_45",
+        "incoterm": "FOB",
+        "currency": "USD",
+        "order_total_amount": 10261.68,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0006",
+            "ordered_qty_packs": 12,
+            "confirmed_qty_packs": 5,
+            "unit_price": 1264.14,
+            "line_amount": 6320.7,
+            "backorder_flag": true
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0006",
+            "ordered_qty_packs": 3,
+            "confirmed_qty_packs": 3,
+            "unit_price": 1313.66,
+            "line_amount": 3940.98,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20250308-0047",
+        "order_date": "2025-03-08T21:39:53Z",
+        "dc_id": "DC-NO-03",
+        "customer_id": "CUST-1002",
+        "order_status": "SHIPPED",
+        "payment_terms": "NET_15",
+        "incoterm": "CIF",
+        "currency": "USD",
+        "order_total_amount": 51035.65,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0006",
+            "ordered_qty_packs": 5,
+            "confirmed_qty_packs": 5,
+            "unit_price": 1403.6,
+            "line_amount": 7018.0,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0009",
+            "ordered_qty_packs": 3,
+            "confirmed_qty_packs": 3,
+            "unit_price": 891.42,
+            "line_amount": 2674.26,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "3",
+            "product_id": "PRD-0003",
+            "ordered_qty_packs": 7,
+            "confirmed_qty_packs": 7,
+            "unit_price": 1994.62,
+            "line_amount": 13962.34,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "4",
+            "product_id": "PRD-0002",
+            "ordered_qty_packs": 17,
+            "confirmed_qty_packs": 17,
+            "unit_price": 1610.65,
+            "line_amount": 27381.05,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20250123-0048",
+        "order_date": "2025-01-23T14:57:32Z",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1004",
+        "order_status": "INVOICED",
+        "payment_terms": "NET_15",
+        "incoterm": "CIF",
+        "currency": "USD",
+        "order_total_amount": 52051.95,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0008",
+            "ordered_qty_packs": 8,
+            "confirmed_qty_packs": 8,
+            "unit_price": 1738.13,
+            "line_amount": 13905.04,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0004",
+            "ordered_qty_packs": 12,
+            "confirmed_qty_packs": 12,
+            "unit_price": 1204.43,
+            "line_amount": 14453.16,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "3",
+            "product_id": "PRD-0007",
+            "ordered_qty_packs": 17,
+            "confirmed_qty_packs": 17,
+            "unit_price": 1393.75,
+            "line_amount": 23693.75,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20260312-0049",
+        "order_date": "2026-03-12T04:32:21Z",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1002",
+        "order_status": "ALLOCATED",
+        "payment_terms": "NET_45",
+        "incoterm": "CIF",
+        "currency": "USD",
+        "order_total_amount": 55629.15,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0008",
+            "ordered_qty_packs": 17,
+            "confirmed_qty_packs": 17,
+            "unit_price": 1798.11,
+            "line_amount": 30567.87,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0008",
+            "ordered_qty_packs": 12,
+            "confirmed_qty_packs": 5,
+            "unit_price": 1618.08,
+            "line_amount": 8090.4,
+            "backorder_flag": true
+          },
+          {
+            "line_id": "3",
+            "product_id": "PRD-0002",
+            "ordered_qty_packs": 12,
+            "confirmed_qty_packs": 12,
+            "unit_price": 1414.24,
+            "line_amount": 16970.88,
+            "backorder_flag": false
+          }
+        ]
+      },
+      {
+        "order_id": "SO-20260304-0050",
+        "order_date": "2026-03-04T05:26:37Z",
+        "dc_id": "DC-NO-03",
+        "customer_id": "CUST-1007",
+        "order_status": "CREATED",
+        "payment_terms": "NET_45",
+        "incoterm": "FOB",
+        "currency": "USD",
+        "order_total_amount": 20437.0,
+        "lines": [
+          {
+            "line_id": "1",
+            "product_id": "PRD-0004",
+            "ordered_qty_packs": 10,
+            "confirmed_qty_packs": 10,
+            "unit_price": 1103.72,
+            "line_amount": 11037.2,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "2",
+            "product_id": "PRD-0002",
+            "ordered_qty_packs": 4,
+            "confirmed_qty_packs": 4,
+            "unit_price": 1483.13,
+            "line_amount": 5932.52,
+            "backorder_flag": false
+          },
+          {
+            "line_id": "3",
+            "product_id": "PRD-0010",
+            "ordered_qty_packs": 8,
+            "confirmed_qty_packs": 8,
+            "unit_price": 433.41,
+            "line_amount": 3467.28,
+            "backorder_flag": false
+          }
+        ]
+      }
+    ],
+    "inventory_snapshots": [
+      {
+        "snapshot_id": "INV-20260126-DC-NO-03-PRD-0004",
+        "snapshot_ts": "2026-01-26T05:52:54Z",
+        "dc_id": "DC-NO-03",
+        "product_id": "PRD-0004",
+        "on_hand_packs": 4081,
+        "reserved_packs": 17,
+        "in_transit_packs": 97
+      },
+      {
+        "snapshot_id": "INV-20260126-DC-NO-03-PRD-0003",
+        "snapshot_ts": "2026-01-26T05:52:54Z",
+        "dc_id": "DC-NO-03",
+        "product_id": "PRD-0003",
+        "on_hand_packs": 4422,
+        "reserved_packs": 155,
+        "in_transit_packs": 54
+      },
+      {
+        "snapshot_id": "INV-20260101-DC-MI-02-PRD-0004",
+        "snapshot_ts": "2026-01-01T11:20:57Z",
+        "dc_id": "DC-MI-02",
+        "product_id": "PRD-0004",
+        "on_hand_packs": 357,
+        "reserved_packs": 84,
+        "in_transit_packs": 9
+      },
+      {
+        "snapshot_id": "INV-20260101-DC-MI-02-PRD-0008",
+        "snapshot_ts": "2026-01-01T11:20:57Z",
+        "dc_id": "DC-MI-02",
+        "product_id": "PRD-0008",
+        "on_hand_packs": 894,
+        "reserved_packs": 168,
+        "in_transit_packs": 55
+      },
+      {
+        "snapshot_id": "INV-20251106-DC-NO-03-PRD-0009",
+        "snapshot_ts": "2025-11-06T07:40:07Z",
+        "dc_id": "DC-NO-03",
+        "product_id": "PRD-0009",
+        "on_hand_packs": 3569,
+        "reserved_packs": 70,
+        "in_transit_packs": 5
+      },
+      {
+        "snapshot_id": "INV-20251106-DC-NO-03-PRD-0003",
+        "snapshot_ts": "2025-11-06T07:40:07Z",
+        "dc_id": "DC-NO-03",
+        "product_id": "PRD-0003",
+        "on_hand_packs": 716,
+        "reserved_packs": 176,
+        "in_transit_packs": 19
+      },
+      {
+        "snapshot_id": "INV-20251106-DC-NO-03-PRD-0006",
+        "snapshot_ts": "2025-11-06T07:40:07Z",
+        "dc_id": "DC-NO-03",
+        "product_id": "PRD-0006",
+        "on_hand_packs": 3087,
+        "reserved_packs": 10,
+        "in_transit_packs": 45
+      },
+      {
+        "snapshot_id": "INV-20260319-DC-SO-01-PRD-0002",
+        "snapshot_ts": "2026-03-19T05:54:59Z",
+        "dc_id": "DC-SO-01",
+        "product_id": "PRD-0002",
+        "on_hand_packs": 3870,
+        "reserved_packs": 89,
+        "in_transit_packs": 39
+      },
+      {
+        "snapshot_id": "INV-20250225-DC-MI-02-PRD-0010",
+        "snapshot_ts": "2025-02-25T21:43:13Z",
+        "dc_id": "DC-MI-02",
+        "product_id": "PRD-0010",
+        "on_hand_packs": 2450,
+        "reserved_packs": 53,
+        "in_transit_packs": 55
+      },
+      {
+        "snapshot_id": "INV-20250225-DC-MI-02-PRD-0002",
+        "snapshot_ts": "2025-02-25T21:43:13Z",
+        "dc_id": "DC-MI-02",
+        "product_id": "PRD-0002",
+        "on_hand_packs": 2560,
+        "reserved_packs": 129,
+        "in_transit_packs": 39
+      },
+      {
+        "snapshot_id": "INV-20250225-DC-MI-02-PRD-0006",
+        "snapshot_ts": "2025-02-25T21:43:13Z",
+        "dc_id": "DC-MI-02",
+        "product_id": "PRD-0006",
+        "on_hand_packs": 3205,
+        "reserved_packs": 173,
+        "in_transit_packs": 95
+      },
+      {
+        "snapshot_id": "INV-20251204-DC-MI-02-PRD-0005",
+        "snapshot_ts": "2025-12-04T03:05:14Z",
+        "dc_id": "DC-MI-02",
+        "product_id": "PRD-0005",
+        "on_hand_packs": 3992,
+        "reserved_packs": 156,
+        "in_transit_packs": 98
+      },
+      {
+        "snapshot_id": "INV-20251001-DC-MI-02-PRD-0002",
+        "snapshot_ts": "2025-10-01T00:58:54Z",
+        "dc_id": "DC-MI-02",
+        "product_id": "PRD-0002",
+        "on_hand_packs": 266,
+        "reserved_packs": 159,
+        "in_transit_packs": 19
+      },
+      {
+        "snapshot_id": "INV-20251016-DC-MI-02-PRD-0010",
+        "snapshot_ts": "2025-10-16T07:56:09Z",
+        "dc_id": "DC-MI-02",
+        "product_id": "PRD-0010",
+        "on_hand_packs": 2648,
+        "reserved_packs": 27,
+        "in_transit_packs": 74
+      },
+      {
+        "snapshot_id": "INV-20250622-DC-MI-02-PRD-0005",
+        "snapshot_ts": "2025-06-22T01:02:41Z",
+        "dc_id": "DC-MI-02",
+        "product_id": "PRD-0005",
+        "on_hand_packs": 3429,
+        "reserved_packs": 125,
+        "in_transit_packs": 71
+      },
+      {
+        "snapshot_id": "INV-20250622-DC-MI-02-PRD-0008",
+        "snapshot_ts": "2025-06-22T01:02:41Z",
+        "dc_id": "DC-MI-02",
+        "product_id": "PRD-0008",
+        "on_hand_packs": 3412,
+        "reserved_packs": 177,
+        "in_transit_packs": 31
+      },
+      {
+        "snapshot_id": "INV-20250521-DC-SO-01-PRD-0001",
+        "snapshot_ts": "2025-05-21T01:39:25Z",
+        "dc_id": "DC-SO-01",
+        "product_id": "PRD-0001",
+        "on_hand_packs": 4128,
+        "reserved_packs": 18,
+        "in_transit_packs": 73
+      },
+      {
+        "snapshot_id": "INV-20251019-DC-SO-01-PRD-0005",
+        "snapshot_ts": "2025-10-19T22:36:39Z",
+        "dc_id": "DC-SO-01",
+        "product_id": "PRD-0005",
+        "on_hand_packs": 121,
+        "reserved_packs": 104,
+        "in_transit_packs": 57
+      },
+      {
+        "snapshot_id": "INV-20251019-DC-SO-01-PRD-0008",
+        "snapshot_ts": "2025-10-19T22:36:39Z",
+        "dc_id": "DC-SO-01",
+        "product_id": "PRD-0008",
+        "on_hand_packs": 3819,
+        "reserved_packs": 18,
+        "in_transit_packs": 87
+      },
+      {
+        "snapshot_id": "INV-20250428-DC-NO-03-PRD-0003",
+        "snapshot_ts": "2025-04-28T20:56:32Z",
+        "dc_id": "DC-NO-03",
+        "product_id": "PRD-0003",
+        "on_hand_packs": 4895,
+        "reserved_packs": 111,
+        "in_transit_packs": 81
+      },
+      {
+        "snapshot_id": "INV-20250618-DC-NO-03-PRD-0001",
+        "snapshot_ts": "2025-06-18T14:59:15Z",
+        "dc_id": "DC-NO-03",
+        "product_id": "PRD-0001",
+        "on_hand_packs": 4070,
+        "reserved_packs": 31,
+        "in_transit_packs": 3
+      },
+      {
+        "snapshot_id": "INV-20250811-DC-NO-03-PRD-0005",
+        "snapshot_ts": "2025-08-11T03:35:03Z",
+        "dc_id": "DC-NO-03",
+        "product_id": "PRD-0005",
+        "on_hand_packs": 3170,
+        "reserved_packs": 110,
+        "in_transit_packs": 18
+      },
+      {
+        "snapshot_id": "INV-20250811-DC-NO-03-PRD-0007",
+        "snapshot_ts": "2025-08-11T03:35:03Z",
+        "dc_id": "DC-NO-03",
+        "product_id": "PRD-0007",
+        "on_hand_packs": 3233,
+        "reserved_packs": 158,
+        "in_transit_packs": 87
+      },
+      {
+        "snapshot_id": "INV-20260216-DC-MI-02-PRD-0005",
+        "snapshot_ts": "2026-02-16T16:56:21Z",
+        "dc_id": "DC-MI-02",
+        "product_id": "PRD-0005",
+        "on_hand_packs": 4785,
+        "reserved_packs": 91,
+        "in_transit_packs": 73
+      },
+      {
+        "snapshot_id": "INV-20250929-DC-MI-02-PRD-0005",
+        "snapshot_ts": "2025-09-29T18:16:11Z",
+        "dc_id": "DC-MI-02",
+        "product_id": "PRD-0005",
+        "on_hand_packs": 1948,
+        "reserved_packs": 173,
+        "in_transit_packs": 92
+      },
+      {
+        "snapshot_id": "INV-20250929-DC-MI-02-PRD-0007",
+        "snapshot_ts": "2025-09-29T18:16:11Z",
+        "dc_id": "DC-MI-02",
+        "product_id": "PRD-0007",
+        "on_hand_packs": 4495,
+        "reserved_packs": 31,
+        "in_transit_packs": 58
+      },
+      {
+        "snapshot_id": "INV-20251112-DC-MI-02-PRD-0006",
+        "snapshot_ts": "2025-11-12T14:51:32Z",
+        "dc_id": "DC-MI-02",
+        "product_id": "PRD-0006",
+        "on_hand_packs": 3825,
+        "reserved_packs": 23,
+        "in_transit_packs": 84
+      },
+      {
+        "snapshot_id": "INV-20250205-DC-SO-01-PRD-0003",
+        "snapshot_ts": "2025-02-05T20:10:41Z",
+        "dc_id": "DC-SO-01",
+        "product_id": "PRD-0003",
+        "on_hand_packs": 1164,
+        "reserved_packs": 138,
+        "in_transit_packs": 32
+      },
+      {
+        "snapshot_id": "INV-20260109-DC-MI-02-PRD-0006",
+        "snapshot_ts": "2026-01-09T03:27:43Z",
+        "dc_id": "DC-MI-02",
+        "product_id": "PRD-0006",
+        "on_hand_packs": 799,
+        "reserved_packs": 23,
+        "in_transit_packs": 55
+      },
+      {
+        "snapshot_id": "INV-20251108-DC-NO-03-PRD-0007",
+        "snapshot_ts": "2025-11-08T23:57:03Z",
+        "dc_id": "DC-NO-03",
+        "product_id": "PRD-0007",
+        "on_hand_packs": 4445,
+        "reserved_packs": 55,
+        "in_transit_packs": 48
+      },
+      {
+        "snapshot_id": "INV-20250308-DC-NO-03-PRD-0002",
+        "snapshot_ts": "2025-03-08T13:50:34Z",
+        "dc_id": "DC-NO-03",
+        "product_id": "PRD-0002",
+        "on_hand_packs": 737,
+        "reserved_packs": 80,
+        "in_transit_packs": 73
+      },
+      {
+        "snapshot_id": "INV-20250308-DC-NO-03-PRD-0010",
+        "snapshot_ts": "2025-03-08T13:50:34Z",
+        "dc_id": "DC-NO-03",
+        "product_id": "PRD-0010",
+        "on_hand_packs": 967,
+        "reserved_packs": 62,
+        "in_transit_packs": 55
+      },
+      {
+        "snapshot_id": "INV-20250308-DC-NO-03-PRD-0003",
+        "snapshot_ts": "2025-03-08T21:39:53Z",
+        "dc_id": "DC-NO-03",
+        "product_id": "PRD-0003",
+        "on_hand_packs": 1226,
+        "reserved_packs": 39,
+        "in_transit_packs": 9
+      },
+      {
+        "snapshot_id": "INV-20260312-DC-MI-02-PRD-0002",
+        "snapshot_ts": "2026-03-12T04:32:21Z",
+        "dc_id": "DC-MI-02",
+        "product_id": "PRD-0002",
+        "on_hand_packs": 2846,
+        "reserved_packs": 37,
+        "in_transit_packs": 17
+      },
+      {
+        "snapshot_id": "INV-20260304-DC-NO-03-PRD-0010",
+        "snapshot_ts": "2026-03-04T05:26:37Z",
+        "dc_id": "DC-NO-03",
+        "product_id": "PRD-0010",
+        "on_hand_packs": 2990,
+        "reserved_packs": 61,
+        "in_transit_packs": 73
+      }
+    ],
+    "shipments": [
+      {
+        "shipment_id": "SHP-20260101-0002",
+        "order_id": "SO-20260101-0002",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1006",
+        "ship_date": "2026-01-01T11:20:57Z",
+        "delivery_date": "2026-01-02T11:20:57Z",
+        "shipment_status": "IN_TRANSIT",
+        "carrier_name": "PolarLine",
+        "tracking_number": "TRK-6692553"
+      },
+      {
+        "shipment_id": "SHP-20260217-0003",
+        "order_id": "SO-20260214-0003",
+        "dc_id": "DC-SO-01",
+        "customer_id": "CUST-1004",
+        "ship_date": "2026-02-17T03:58:42Z",
+        "delivery_date": "2026-02-19T03:58:42Z",
+        "shipment_status": "IN_TRANSIT",
+        "carrier_name": "PolarLine",
+        "tracking_number": "TRK-4652414"
+      },
+      {
+        "shipment_id": "SHP-20250130-0004",
+        "order_id": "SO-20250130-0004",
+        "dc_id": "DC-NO-03",
+        "customer_id": "CUST-1001",
+        "ship_date": "2025-01-30T21:05:14Z",
+        "delivery_date": "2025-02-04T21:05:14Z",
+        "shipment_status": "IN_TRANSIT",
+        "carrier_name": "HealthTrans",
+        "tracking_number": "TRK-4946066"
+      },
+      {
+        "shipment_id": "SHP-20250503-0006",
+        "order_id": "SO-20250503-0006",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1003",
+        "ship_date": "2025-05-03T09:40:14Z",
+        "delivery_date": "2025-05-08T09:40:14Z",
+        "shipment_status": "IN_TRANSIT",
+        "carrier_name": "PolarLine",
+        "tracking_number": "TRK-5727085"
+      },
+      {
+        "shipment_id": "SHP-20251109-0007",
+        "order_id": "SO-20251106-0007",
+        "dc_id": "DC-NO-03",
+        "customer_id": "CUST-1006",
+        "ship_date": "2025-11-09T07:40:07Z",
+        "delivery_date": "2025-11-14T07:40:07Z",
+        "shipment_status": "DELAYED",
+        "carrier_name": "MedRoute",
+        "tracking_number": "TRK-4971793"
+      },
+      {
+        "shipment_id": "SHP-20250115-0009",
+        "order_id": "SO-20250113-0009",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1006",
+        "ship_date": "2025-01-15T07:01:53Z",
+        "delivery_date": "2025-01-17T07:01:53Z",
+        "shipment_status": "DELAYED",
+        "carrier_name": "PolarLine",
+        "tracking_number": "TRK-1641849"
+      },
+      {
+        "shipment_id": "SHP-20250228-0010",
+        "order_id": "SO-20250225-0010",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1006",
+        "ship_date": "2025-02-28T21:43:13Z",
+        "delivery_date": "2025-03-02T21:43:13Z",
+        "shipment_status": "DELAYED",
+        "carrier_name": "PolarLine",
+        "tracking_number": "TRK-3846949"
+      },
+      {
+        "shipment_id": "SHP-20260122-0012",
+        "order_id": "SO-20260120-0012",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1004",
+        "ship_date": "2026-01-22T03:52:50Z",
+        "delivery_date": "2026-01-26T03:52:50Z",
+        "shipment_status": "IN_TRANSIT",
+        "carrier_name": "HealthTrans",
+        "tracking_number": "TRK-5793722"
+      },
+      {
+        "shipment_id": "SHP-20251016-0016",
+        "order_id": "SO-20251016-0016",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1005",
+        "ship_date": "2025-10-16T07:56:09Z",
+        "delivery_date": "2025-10-21T07:56:09Z",
+        "shipment_status": "IN_TRANSIT",
+        "carrier_name": "PolarLine",
+        "tracking_number": "TRK-9937982"
+      },
+      {
+        "shipment_id": "SHP-20250624-0018",
+        "order_id": "SO-20250622-0018",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1006",
+        "ship_date": "2025-06-24T01:02:41Z",
+        "delivery_date": "2025-06-27T01:02:41Z",
+        "shipment_status": "DELIVERED",
+        "carrier_name": "MedRoute",
+        "tracking_number": "TRK-3024269"
+      },
+      {
+        "shipment_id": "SHP-20250524-0020",
+        "order_id": "SO-20250521-0020",
+        "dc_id": "DC-SO-01",
+        "customer_id": "CUST-1005",
+        "ship_date": "2025-05-24T01:39:25Z",
+        "delivery_date": "2025-05-27T01:39:25Z",
+        "shipment_status": "DELAYED",
+        "carrier_name": "PolarLine",
+        "tracking_number": "TRK-6123430"
+      },
+      {
+        "shipment_id": "SHP-20251020-0021",
+        "order_id": "SO-20251019-0021",
+        "dc_id": "DC-SO-01",
+        "customer_id": "CUST-1002",
+        "ship_date": "2025-10-20T22:36:39Z",
+        "delivery_date": "2025-10-22T22:36:39Z",
+        "shipment_status": "DELIVERED",
+        "carrier_name": "MedRoute",
+        "tracking_number": "TRK-2198058"
+      },
+      {
+        "shipment_id": "SHP-20250202-0022",
+        "order_id": "SO-20250131-0022",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1005",
+        "ship_date": "2025-02-02T06:02:27Z",
+        "delivery_date": "2025-02-07T06:02:27Z",
+        "shipment_status": "DELIVERED",
+        "carrier_name": "MedRoute",
+        "tracking_number": "TRK-2532210"
+      },
+      {
+        "shipment_id": "SHP-20250430-0023",
+        "order_id": "SO-20250428-0023",
+        "dc_id": "DC-NO-03",
+        "customer_id": "CUST-1001",
+        "ship_date": "2025-04-30T20:56:32Z",
+        "delivery_date": "2025-05-03T20:56:32Z",
+        "shipment_status": "DELAYED",
+        "carrier_name": "MedRoute",
+        "tracking_number": "TRK-3698193"
+      },
+      {
+        "shipment_id": "SHP-20250620-0024",
+        "order_id": "SO-20250618-0024",
+        "dc_id": "DC-NO-03",
+        "customer_id": "CUST-1008",
+        "ship_date": "2025-06-20T14:59:15Z",
+        "delivery_date": "2025-06-25T14:59:15Z",
+        "shipment_status": "IN_TRANSIT",
+        "carrier_name": "HealthTrans",
+        "tracking_number": "TRK-7844947"
+      },
+      {
+        "shipment_id": "SHP-20250813-0028",
+        "order_id": "SO-20250811-0028",
+        "dc_id": "DC-NO-03",
+        "customer_id": "CUST-1002",
+        "ship_date": "2025-08-13T03:35:03Z",
+        "delivery_date": "2025-08-17T03:35:03Z",
+        "shipment_status": "DELIVERED",
+        "carrier_name": "HealthTrans",
+        "tracking_number": "TRK-1157662"
+      },
+      {
+        "shipment_id": "SHP-20250424-0030",
+        "order_id": "SO-20250423-0030",
+        "dc_id": "DC-SO-01",
+        "customer_id": "CUST-1005",
+        "ship_date": "2025-04-24T23:10:42Z",
+        "delivery_date": "2025-04-26T23:10:42Z",
+        "shipment_status": "IN_TRANSIT",
+        "carrier_name": "HealthTrans",
+        "tracking_number": "TRK-7138070"
+      },
+      {
+        "shipment_id": "SHP-20251002-0031",
+        "order_id": "SO-20250929-0031",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1003",
+        "ship_date": "2025-10-02T18:16:11Z",
+        "delivery_date": "2025-10-05T18:16:11Z",
+        "shipment_status": "DELAYED",
+        "carrier_name": "PolarLine",
+        "tracking_number": "TRK-2957497"
+      },
+      {
+        "shipment_id": "SHP-20250314-0032",
+        "order_id": "SO-20250313-0032",
+        "dc_id": "DC-SO-01",
+        "customer_id": "CUST-1005",
+        "ship_date": "2025-03-14T01:39:03Z",
+        "delivery_date": "2025-03-18T01:39:03Z",
+        "shipment_status": "DELAYED",
+        "carrier_name": "MedRoute",
+        "tracking_number": "TRK-9209880"
+      },
+      {
+        "shipment_id": "SHP-20251114-0033",
+        "order_id": "SO-20251112-0033",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1001",
+        "ship_date": "2025-11-14T14:51:32Z",
+        "delivery_date": "2025-11-16T14:51:32Z",
+        "shipment_status": "IN_TRANSIT",
+        "carrier_name": "HealthTrans",
+        "tracking_number": "TRK-4442778"
+      },
+      {
+        "shipment_id": "SHP-20250207-0034",
+        "order_id": "SO-20250205-0034",
+        "dc_id": "DC-SO-01",
+        "customer_id": "CUST-1004",
+        "ship_date": "2025-02-07T20:10:41Z",
+        "delivery_date": "2025-02-12T20:10:41Z",
+        "shipment_status": "DELAYED",
+        "carrier_name": "MedRoute",
+        "tracking_number": "TRK-8583392"
+      },
+      {
+        "shipment_id": "SHP-20250906-0041",
+        "order_id": "SO-20250906-0041",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1007",
+        "ship_date": "2025-09-06T22:06:10Z",
+        "delivery_date": "2025-09-10T22:06:10Z",
+        "shipment_status": "DELAYED",
+        "carrier_name": "PolarLine",
+        "tracking_number": "TRK-3947669"
+      },
+      {
+        "shipment_id": "SHP-20250725-0043",
+        "order_id": "SO-20250722-0043",
+        "dc_id": "DC-NO-03",
+        "customer_id": "CUST-1006",
+        "ship_date": "2025-07-25T11:17:48Z",
+        "delivery_date": "2025-07-30T11:17:48Z",
+        "shipment_status": "DELAYED",
+        "carrier_name": "HealthTrans",
+        "tracking_number": "TRK-6422534"
+      },
+      {
+        "shipment_id": "SHP-20260319-0044",
+        "order_id": "SO-20260319-0044",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1003",
+        "ship_date": "2026-03-19T22:50:10Z",
+        "delivery_date": "2026-03-20T22:50:10Z",
+        "shipment_status": "DELIVERED",
+        "carrier_name": "PolarLine",
+        "tracking_number": "TRK-2287332"
+      },
+      {
+        "shipment_id": "SHP-20251129-0045",
+        "order_id": "SO-20251127-0045",
+        "dc_id": "DC-NO-03",
+        "customer_id": "CUST-1007",
+        "ship_date": "2025-11-29T03:17:15Z",
+        "delivery_date": "2025-11-30T03:17:15Z",
+        "shipment_status": "DELAYED",
+        "carrier_name": "HealthTrans",
+        "tracking_number": "TRK-3895058"
+      },
+      {
+        "shipment_id": "SHP-20250122-0046",
+        "order_id": "SO-20250121-0046",
+        "dc_id": "DC-NO-03",
+        "customer_id": "CUST-1008",
+        "ship_date": "2025-01-22T09:01:12Z",
+        "delivery_date": "2025-01-25T09:01:12Z",
+        "shipment_status": "DELIVERED",
+        "carrier_name": "HealthTrans",
+        "tracking_number": "TRK-7575963"
+      },
+      {
+        "shipment_id": "SHP-20250309-0047",
+        "order_id": "SO-20250308-0047",
+        "dc_id": "DC-NO-03",
+        "customer_id": "CUST-1002",
+        "ship_date": "2025-03-09T21:39:53Z",
+        "delivery_date": "2025-03-14T21:39:53Z",
+        "shipment_status": "IN_TRANSIT",
+        "carrier_name": "HealthTrans",
+        "tracking_number": "TRK-8342941"
+      },
+      {
+        "shipment_id": "SHP-20250126-0048",
+        "order_id": "SO-20250123-0048",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1004",
+        "ship_date": "2025-01-26T14:57:32Z",
+        "delivery_date": "2025-01-29T14:57:32Z",
+        "shipment_status": "DELAYED",
+        "carrier_name": "MedRoute",
+        "tracking_number": "TRK-9655523"
+      },
+      {
+        "shipment_id": "SHP-20260312-0049",
+        "order_id": "SO-20260312-0049",
+        "dc_id": "DC-MI-02",
+        "customer_id": "CUST-1002",
+        "ship_date": "2026-03-12T04:32:21Z",
+        "delivery_date": "2026-03-13T04:32:21Z",
+        "shipment_status": "IN_TRANSIT",
+        "carrier_name": "PolarLine",
+        "tracking_number": "TRK-4618086"
+      }
+    ],
+    "returns": [
+      {
+        "return_id": "RET-20251106-0007-1",
+        "original_order_id": "SO-20251106-0007",
+        "customer_id": "CUST-1006",
+        "product_id": "PRD-0009",
+        "return_date": "2025-12-21T07:40:07Z",
+        "reason_code": "EXPIRED",
+        "returned_qty_packs": 5,
+        "credit_amount": 5022.2
+      },
+      {
+        "return_id": "RET-20250225-0010-1",
+        "original_order_id": "SO-20250225-0010",
+        "customer_id": "CUST-1006",
+        "product_id": "PRD-0010",
+        "return_date": "2025-03-25T21:43:13Z",
+        "reason_code": "EXPIRED",
+        "returned_qty_packs": 7,
+        "credit_amount": 3533.81
+      },
+      {
+        "return_id": "RET-20251016-0016-1",
+        "original_order_id": "SO-20251016-0016",
+        "customer_id": "CUST-1005",
+        "product_id": "PRD-0010",
+        "return_date": "2025-11-26T07:56:09Z",
+        "reason_code": "RECALL",
+        "returned_qty_packs": 10,
+        "credit_amount": 4905.4
+      },
+      {
+        "return_id": "RET-20250522-0026-3",
+        "original_order_id": "SO-20250522-0026",
+        "customer_id": "CUST-1005",
+        "product_id": "PRD-0004",
+        "return_date": "2025-07-11T15:06:27Z",
+        "reason_code": "EXPIRED",
+        "returned_qty_packs": 8,
+        "credit_amount": 8817.92
+      },
+      {
+        "return_id": "RET-20250906-0041-2",
+        "original_order_id": "SO-20250906-0041",
+        "customer_id": "CUST-1007",
+        "product_id": "PRD-0009",
+        "return_date": "2025-09-24T22:06:10Z",
+        "reason_code": "DAMAGED",
+        "returned_qty_packs": 5,
+        "credit_amount": 4424.3
+      },
+      {
+        "return_id": "RET-20250308-0047-4",
+        "original_order_id": "SO-20250308-0047",
+        "customer_id": "CUST-1002",
+        "product_id": "PRD-0002",
+        "return_date": "2025-05-01T21:39:53Z",
+        "reason_code": "RECALL",
+        "returned_qty_packs": 11,
+        "credit_amount": 17717.15
+      },
+      {
+        "return_id": "RET-20260312-0049-3",
+        "original_order_id": "SO-20260312-0049",
+        "customer_id": "CUST-1002",
+        "product_id": "PRD-0002",
+        "return_date": "2026-04-30T04:32:21Z",
+        "reason_code": "DAMAGED",
+        "returned_qty_packs": 8,
+        "credit_amount": 11313.92
+      }
+    ]
+  }
+}

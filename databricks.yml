@@ -1,0 +1,20 @@
+bundle:
+  name: bronze_pharma_pipeline
+
+include:
+  - resources/*.yml
+
+variables:
+  catalog:
+    description: Unity Catalog name for pipeline deployment
+  schema:
+    description: Schema name for bronze table
+
+targets:
+  dev:
+    mode: development
+    workspace:
+      host: https://dbc-986cc365-9b2e.cloud.databricks.com
+    variables:
+      catalog: workspace
+      schema: bronze_dev
