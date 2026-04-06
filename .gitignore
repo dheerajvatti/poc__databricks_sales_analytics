@@ -7,5 +7,7 @@ __pycache__/
 
 .vscode/
 .DS_Store
+/.github/skills/
+/.github/skills/**
 
 .ai-dev-kit/
