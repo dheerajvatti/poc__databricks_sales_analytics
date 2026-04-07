@@ -1,6 +1,6 @@
 from pyspark import pipelines as dp
 from pyspark.sql import functions as F
-from pyspark.sql.types import DateType, StringType, StructField, StructType, TimestampType
+from pyspark.sql.types import DateType, IntegerType, StringType, StructField, StructType, TimestampType
 
 
 table_schema = StructType([
@@ -9,6 +9,7 @@ table_schema = StructType([
     StructField("dc_id", StringType(), True),
     StructField("customer_id", StringType(), True),
     StructField("ship_date", TimestampType(), True),
+    StructField("ship_date_key", IntegerType(), True),
     StructField("delivery_date", TimestampType(), True),
     StructField("shipment_status", StringType(), True),
     StructField("carrier_name", StringType(), True),
@@ -53,6 +54,7 @@ def silver_shipments():
                 F.col("_ingest_date"),
                 F.col("_source_file")
             )
+            .withColumn("ship_date_key", F.date_format(F.col("ship_date"), "yyyyMMdd").cast(IntegerType()))
             .withColumn("shipment_id", F.trim(F.col("shipment_id")))
     )
 

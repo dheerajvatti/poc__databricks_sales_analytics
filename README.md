@@ -64,6 +64,7 @@ These tables flatten and validate the nested business entities:
 - `workspace.silver_dev.dim_distribution_centers_current`
 - `workspace.silver_dev.dim_customers_hist`
 - `workspace.silver_dev.dim_customers_current`
+- `workspace.silver_dev.dim_time`
 - `workspace.silver_dev.fct_sales_orders`
 - `workspace.silver_dev.fct_sales_order_lines`
 - `workspace.silver_dev.fct_inventory_snapshots`
@@ -76,6 +77,14 @@ Common Silver patterns used in this project:
 - `@dp.expect_or_drop(...)` for data quality expectations
 - `withWatermark(...).dropDuplicates(...)` for streaming-safe deduplication
 - explicit casting and trimming for standardized business columns
+
+Conformed time join keys:
+
+- `fct_sales_orders.date_key` -> `dim_time.date_key`
+- `fct_sales_order_lines.date_key` -> `dim_time.date_key`
+- `fct_inventory_snapshots.date_key` -> `dim_time.date_key`
+- `fct_shipments.ship_date_key` -> `dim_time.date_key`
+- `fct_returns.date_key` -> `dim_time.date_key`
 
 ### Gold
 

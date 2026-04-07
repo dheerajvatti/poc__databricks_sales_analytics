@@ -6,6 +6,7 @@ from pyspark.sql.types import BooleanType, DateType, DoubleType, IntegerType, St
 table_schema = StructType([
     StructField("order_id", StringType(), True),
     StructField("line_id", StringType(), True),
+    StructField("date_key", IntegerType(), True),
     StructField("product_id", StringType(), True),
     StructField("ordered_qty_packs", IntegerType(), True),
     StructField("confirmed_qty_packs", IntegerType(), True),
@@ -46,11 +47,13 @@ def silver_sales_order_lines():
                 "_ingest_date",
                 "_source_file",
                 "order_id",
+                "order_date",
                 "inline_outer(lines)"
             )
             .select(
                 F.col("order_id"),
                 F.col("line_id"),
+                F.date_format(F.to_timestamp("order_date"), "yyyyMMdd").cast(IntegerType()).alias("date_key"),
                 F.col("product_id"),
                 F.col("ordered_qty_packs").cast(IntegerType()),
                 F.col("confirmed_qty_packs").cast(IntegerType()),

@@ -9,6 +9,7 @@ table_schema = StructType([
     StructField("customer_id", StringType(), True),
     StructField("product_id", StringType(), True),
     StructField("return_date", TimestampType(), True),
+    StructField("date_key", IntegerType(), True),
     StructField("reason_code", StringType(), True),
     StructField("returned_qty_packs", IntegerType(), True),
     StructField("credit_amount", DoubleType(), True),
@@ -51,6 +52,7 @@ def silver_returns():
                 F.col("_ingest_date"),
                 F.col("_source_file")
             )
+            .withColumn("date_key", F.date_format(F.col("return_date"), "yyyyMMdd").cast(IntegerType()))
             .withColumn("return_id", F.trim(F.col("return_id")))
     )
 

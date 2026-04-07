@@ -1,11 +1,12 @@
 from pyspark import pipelines as dp
 from pyspark.sql import functions as F
-from pyspark.sql.types import DateType, DoubleType, StringType, StructField, StructType, TimestampType
+from pyspark.sql.types import DateType, DoubleType, IntegerType, StringType, StructField, StructType, TimestampType
 
 
 table_schema = StructType([
     StructField("order_id", StringType(), True),
     StructField("order_date", TimestampType(), True),
+    StructField("date_key", IntegerType(), True),
     StructField("dc_id", StringType(), True),
     StructField("customer_id", StringType(), True),
     StructField("order_status", StringType(), True),
@@ -53,6 +54,7 @@ def silver_sales_orders():
                 F.col("_ingest_date"),
                 F.col("_source_file")
             )
+            .withColumn("date_key", F.date_format(F.col("order_date"), "yyyyMMdd").cast(IntegerType()))
             .withColumn("order_id", F.trim(F.col("order_id")))
     )
 

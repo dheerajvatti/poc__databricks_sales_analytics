@@ -6,6 +6,7 @@ from pyspark.sql.types import DateType, IntegerType, StringType, StructField, St
 table_schema = StructType([
     StructField("snapshot_id", StringType(), True),
     StructField("snapshot_ts", TimestampType(), True),
+    StructField("date_key", IntegerType(), True),
     StructField("dc_id", StringType(), True),
     StructField("product_id", StringType(), True),
     StructField("on_hand_packs", IntegerType(), True),
@@ -49,6 +50,7 @@ def silver_inventory_snapshots():
                 F.col("_ingest_date"),
                 F.col("_source_file")
             )
+            .withColumn("date_key", F.date_format(F.col("snapshot_ts"), "yyyyMMdd").cast(IntegerType()))
             .withColumn("snapshot_id", F.trim(F.col("snapshot_id")))
     )
 
