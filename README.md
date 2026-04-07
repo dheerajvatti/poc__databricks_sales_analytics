@@ -130,10 +130,23 @@ erDiagram
 		string region
 	}
 
+	DIM_TIME {
+		int date_key PK
+		date calendar_date
+		string day_name
+		int month_num
+		string month_name
+		int quarter_num
+		int year_num
+		int fiscal_year
+		string fiscal_year_label
+	}
+
 	FCT_SALES_ORDERS {
 		string order_id PK
 		string customer_id FK
 		string dc_id FK
+		int date_key FK
 		date order_date
 		string order_status
 		double order_total_amount
@@ -143,6 +156,7 @@ erDiagram
 		string line_id PK
 		string order_id FK
 		string product_id FK
+		int date_key FK
 		int ordered_qty_packs
 		int confirmed_qty_packs
 		double line_amount
@@ -152,6 +166,7 @@ erDiagram
 		string snapshot_id PK
 		string dc_id FK
 		string product_id FK
+		int date_key FK
 		timestamp snapshot_ts
 		int on_hand_packs
 		int reserved_packs
@@ -163,6 +178,7 @@ erDiagram
 		string order_id FK
 		string dc_id FK
 		string customer_id FK
+		int ship_date_key FK
 		date ship_date
 		date delivery_date
 	}
@@ -172,6 +188,7 @@ erDiagram
 		string original_order_id FK
 		string customer_id FK
 		string product_id FK
+		int date_key FK
 		date return_date
 		string reason_code
 		double credit_amount
@@ -181,26 +198,32 @@ erDiagram
 
 	DIM_CUSTOMERS_CURRENT ||--o{ FCT_SALES_ORDERS : "customer_id"
 	DIM_DISTRIBUTION_CENTERS_CURRENT ||--o{ FCT_SALES_ORDERS : "dc_id"
+	DIM_TIME ||--o{ FCT_SALES_ORDERS : "date_key"
 
 	FCT_SALES_ORDERS ||--o{ FCT_SALES_ORDER_LINES : "order_id"
 	DIM_PRODUCTS_CURRENT ||--o{ FCT_SALES_ORDER_LINES : "product_id"
+	DIM_TIME ||--o{ FCT_SALES_ORDER_LINES : "date_key"
 
 	DIM_DISTRIBUTION_CENTERS_CURRENT ||--o{ FCT_INVENTORY_SNAPSHOTS : "dc_id"
 	DIM_PRODUCTS_CURRENT ||--o{ FCT_INVENTORY_SNAPSHOTS : "product_id"
+	DIM_TIME ||--o{ FCT_INVENTORY_SNAPSHOTS : "date_key"
 
 	FCT_SALES_ORDERS ||--o{ FCT_SHIPMENTS : "order_id"
 	DIM_DISTRIBUTION_CENTERS_CURRENT ||--o{ FCT_SHIPMENTS : "dc_id"
 	DIM_CUSTOMERS_CURRENT ||--o{ FCT_SHIPMENTS : "customer_id"
+	DIM_TIME ||--o{ FCT_SHIPMENTS : "ship_date_key"
 
 	FCT_SALES_ORDERS ||--o{ FCT_RETURNS : "original_order_id"
 	DIM_CUSTOMERS_CURRENT ||--o{ FCT_RETURNS : "customer_id"
 	DIM_PRODUCTS_CURRENT ||--o{ FCT_RETURNS : "product_id"
+	DIM_TIME ||--o{ FCT_RETURNS : "date_key"
 ```
 
 Notes:
 
 - current dimensions (`dim_*_current`) are the BI join surfaces.
 - historical SCD2 dimensions (`dim_*` / `dim_customers_hist`) support point-in-time analysis.
+- conformed time dimension (`dim_time`) provides standard calendar and fiscal attributes for all facts via date_key joins.
 
 ### Gold Mart Lineage
 
