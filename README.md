@@ -163,3 +163,22 @@ What this does:
 - add data quality tests and table-level checks for Gold outputs
 - add a business glossary for the Silver and Gold tables
 - add parameterization for multi-environment deployment
+
+## Integration Checks On Push
+
+This repository includes an integration check workflow that runs on every push:
+
+- workflow: `.github/workflows/integration-warehouse-checks.yml`
+- SQL checks: `tests/integration/ri_checks.sql`
+- runner: `tests/integration/run_ri_checks.py`
+
+What it validates:
+
+- `databricks bundle validate`
+- referential integrity from facts to current dimensions in `silver_dev`
+
+Required GitHub Actions secrets:
+
+- `DATABRICKS_HOST`
+- `DATABRICKS_TOKEN`
+- `DATABRICKS_WAREHOUSE_ID`
