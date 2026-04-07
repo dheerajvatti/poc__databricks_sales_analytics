@@ -17,6 +17,20 @@ The project ingests a nested JSON landing file, normalizes it into entity-level 
 ```text
 .
 ├── bronze_dev/
+### Executive Dashboards
+
+**Pharma Distribution Executive Summary** (Basic KPIs)
+- **URL:** https://dbc-986cc365-9b2e.cloud.databricks.com/sql/dashboardsv3/01f132bdde471504b3d0a8c5f7796b27
+- **Dashboard ID:** `01f132bdde471504b3d0a8c5f7796b27`
+- **Focus:** High-level KPI counters (total revenue, orders, shipments)
+
+**Pharma Distribution Executive Dashboard** (Enhanced Metrics)
+- **URL:** https://dbc-986cc365-9b2e.cloud.databricks.com/sql/dashboardsv3/01f132beb1f4192695ff1c60cec0d5d5
+- **Dashboard ID:** `01f132beb1f4192695ff1c60cec0d5d5`
+- **Focus:** Comprehensive executive reporting with KPI counters, revenue trends, monthly performance, and operational metrics
+
+Both dashboards use the conformed time dimension (`dim_time`) for consistent time-based reporting.
+
 │   └── landing/
 │       └── pharma_distribution_landing.json
 ├── resources/
