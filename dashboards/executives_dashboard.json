@@ -1,0 +1,394 @@
+{
+  "layout": {
+    "pages": [
+      {
+        "name": "Executive Overview",
+        "displayName": "Executive Overview",
+        "layout": [
+          {
+            "widget": {
+              "name": "title",
+              "textbox_spec": "# Pharma Distribution Executive Dashboard"
+            },
+            "position": {
+              "x": 0,
+              "y": 0,
+              "width": 6,
+              "height": 1
+            }
+          },
+          {
+            "widget": {
+              "name": "subtitle",
+              "textbox_spec": "Key metrics and trends powered by time-dimension analytics"
+            },
+            "position": {
+              "x": 0,
+              "y": 1,
+              "width": 6,
+              "height": 1
+            }
+          },
+          {
+            "widget": {
+              "name": "kpi_revenue",
+              "queries": [
+                {
+                  "name": "main_query",
+                  "query": {
+                    "datasetName": "monthly_revenue",
+                    "fields": [
+                      {
+                        "name": "sum(total_revenue)",
+                        "expression": "SUM(`total_revenue`)"
+                      }
+                    ],
+                    "disaggregated": false
+                  }
+                }
+              ],
+              "spec": {
+                "version": 2,
+                "widgetType": "counter",
+                "encodings": {
+                  "value": {
+                    "fieldName": "sum(total_revenue)",
+                    "displayName": "Total Revenue (2026)"
+                  }
+                },
+                "frame": {
+                  "showTitle": true,
+                  "title": "YTD Revenue"
+                }
+              }
+            },
+            "position": {
+              "x": 0,
+              "y": 2,
+              "width": 2,
+              "height": 3
+            }
+          },
+          {
+            "widget": {
+              "name": "kpi_orders",
+              "queries": [
+                {
+                  "name": "main_query",
+                  "query": {
+                    "datasetName": "monthly_revenue",
+                    "fields": [
+                      {
+                        "name": "sum(order_count)",
+                        "expression": "SUM(`order_count`)"
+                      }
+                    ],
+                    "disaggregated": false
+                  }
+                }
+              ],
+              "spec": {
+                "version": 2,
+                "widgetType": "counter",
+                "encodings": {
+                  "value": {
+                    "fieldName": "sum(order_count)",
+                    "displayName": "Total Orders"
+                  }
+                },
+                "frame": {
+                  "showTitle": true,
+                  "title": "Order Count (2026)"
+                }
+              }
+            },
+            "position": {
+              "x": 2,
+              "y": 2,
+              "width": 2,
+              "height": 3
+            }
+          },
+          {
+            "widget": {
+              "name": "kpi_aov",
+              "queries": [
+                {
+                  "name": "main_query",
+                  "query": {
+                    "datasetName": "monthly_revenue",
+                    "fields": [
+                      {
+                        "name": "avg(avg_order_value)",
+                        "expression": "AVG(`avg_order_value`)"
+                      }
+                    ],
+                    "disaggregated": false
+                  }
+                }
+              ],
+              "spec": {
+                "version": 2,
+                "widgetType": "counter",
+                "encodings": {
+                  "value": {
+                    "fieldName": "avg(avg_order_value)",
+                    "displayName": "Avg Order Value"
+                  }
+                },
+                "frame": {
+                  "showTitle": true,
+                  "title": "AOV (2026)"
+                }
+              }
+            },
+            "position": {
+              "x": 4,
+              "y": 2,
+              "width": 2,
+              "height": 3
+            }
+          },
+          {
+            "widget": {
+              "name": "section_trends",
+              "textbox_spec": "## Monthly Trends"
+            },
+            "position": {
+              "x": 0,
+              "y": 5,
+              "width": 6,
+              "height": 1
+            }
+          },
+          {
+            "widget": {
+              "name": "chart_monthly_revenue",
+              "queries": [
+                {
+                  "name": "main_query",
+                  "query": {
+                    "datasetName": "monthly_revenue",
+                    "fields": [
+                      {
+                        "name": "month_label",
+                        "expression": "`month_label`"
+                      },
+                      {
+                        "name": "total_revenue",
+                        "expression": "`total_revenue`"
+                      }
+                    ],
+                    "disaggregated": true
+                  }
+                }
+              ],
+              "spec": {
+                "version": 3,
+                "widgetType": "line",
+                "encodings": {
+                  "x": {
+                    "fieldName": "month_label",
+                    "scale": {
+                      "type": "temporal"
+                    },
+                    "displayName": "Month"
+                  },
+                  "y": {
+                    "fieldName": "total_revenue",
+                    "scale": {
+                      "type": "quantitative"
+                    },
+                    "displayName": "Revenue"
+                  }
+                },
+                "frame": {
+                  "showTitle": true,
+                  "title": "Revenue Trend by Month (2026)"
+                }
+              }
+            },
+            "position": {
+              "x": 0,
+              "y": 6,
+              "width": 3,
+              "height": 5
+            }
+          },
+          {
+            "widget": {
+              "name": "chart_fulfillment",
+              "queries": [
+                {
+                  "name": "main_query",
+                  "query": {
+                    "datasetName": "monthly_revenue",
+                    "fields": [
+                      {
+                        "name": "month_label",
+                        "expression": "`month_label`"
+                      },
+                      {
+                        "name": "fulfillment_rate",
+                        "expression": "`fulfillment_rate`"
+                      }
+                    ],
+                    "disaggregated": true
+                  }
+                }
+              ],
+              "spec": {
+                "version": 3,
+                "widgetType": "line",
+                "encodings": {
+                  "x": {
+                    "fieldName": "month_label",
+                    "scale": {
+                      "type": "temporal"
+                    },
+                    "displayName": "Month"
+                  },
+                  "y": {
+                    "fieldName": "fulfillment_rate",
+                    "scale": {
+                      "type": "quantitative"
+                    },
+                    "displayName": "Fulfillment Rate"
+                  }
+                },
+                "frame": {
+                  "showTitle": true,
+                  "title": "Order Fulfillment Rate (2026)"
+                }
+              }
+            },
+            "position": {
+              "x": 3,
+              "y": 6,
+              "width": 3,
+              "height": 5
+            }
+          },
+          {
+            "widget": {
+              "name": "section_operations",
+              "textbox_spec": "## Operational Metrics"
+            },
+            "position": {
+              "x": 0,
+              "y": 11,
+              "width": 6,
+              "height": 1
+            }
+          },
+          {
+            "widget": {
+              "name": "table_monthly_summary",
+              "queries": [
+                {
+                  "name": "main_query",
+                  "query": {
+                    "datasetName": "monthly_revenue",
+                    "fields": [
+                      {
+                        "name": "month_label",
+                        "expression": "`month_label`"
+                      },
+                      {
+                        "name": "total_revenue",
+                        "expression": "`total_revenue`"
+                      },
+                      {
+                        "name": "order_count",
+                        "expression": "`order_count`"
+                      },
+                      {
+                        "name": "avg_order_value",
+                        "expression": "`avg_order_value`"
+                      },
+                      {
+                        "name": "fulfillment_rate",
+                        "expression": "`fulfillment_rate`"
+                      }
+                    ],
+                    "disaggregated": true
+                  }
+                }
+              ],
+              "spec": {
+                "version": 2,
+                "widgetType": "table",
+                "encodings": {
+                  "columns": [
+                    {
+                      "fieldName": "month_label",
+                      "displayName": "Month"
+                    },
+                    {
+                      "fieldName": "total_revenue",
+                      "displayName": "Revenue"
+                    },
+                    {
+                      "fieldName": "order_count",
+                      "displayName": "Orders"
+                    },
+                    {
+                      "fieldName": "avg_order_value",
+                      "displayName": "AOV"
+                    },
+                    {
+                      "fieldName": "fulfillment_rate",
+                      "displayName": "Fulfillment %"
+                    }
+                  ]
+                },
+                "frame": {
+                  "showTitle": true,
+                  "title": "Monthly Performance Summary (2026)"
+                }
+              }
+            },
+            "position": {
+              "x": 0,
+              "y": 12,
+              "width": 6,
+              "height": 6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "datasets": [
+    {
+      "name": "monthly_revenue",
+      "displayName": "Monthly Revenue",
+      "tables": [
+        {
+          "datasetTable": {
+            "tableReference": {
+              "table": "fct_sales_order_lines",
+              "schema": "silver_dev",
+              "catalog": "workspace"
+            },
+            "isPhysicalTable": true
+          },
+          "shallowMode": true
+        }
+      ],
+      "definition": {
+        "scalarFunctions": [
+          {
+            "fieldAlias": "month_label",
+            "scalarFunctionType": "CAST",
+            "input": {
+              "column": "order_date"
+            },
+            "dataType": "date"
+          }
+        ],
+        "customExpression": "SELECT\n  DATE_TRUNC('MONTH', o.order_date)::text AS month_label,\n  SUM(l.line_amount) AS total_revenue,\n  COUNT(DISTINCT l.order_id) AS order_count,\n  ROUND(SUM(l.line_amount) / NULLIF(COUNT(DISTINCT l.order_id), 0), 2) AS avg_order_value,\n  ROUND(SUM(l.confirmed_qty_packs) / NULLIF(SUM(l.ordered_qty_packs), 0), 4) AS fulfillment_rate\nFROM\n  workspace.silver_dev.fct_sales_order_lines l\n  INNER JOIN workspace.silver_dev.fct_sales_orders o ON l.order_id = o.order_id\n  INNER JOIN workspace.silver_dev.dim_time t ON o.date_key = t.date_key\nWHERE\n  YEAR(o.order_date) = 2026\nGROUP BY\n  DATE_TRUNC('MONTH', o.order_date)\nORDER BY\n  DATE_TRUNC('MONTH', o.order_date) DESC"
+      }
+    }
+  ]
+}
