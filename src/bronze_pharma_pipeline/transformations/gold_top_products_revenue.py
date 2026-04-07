@@ -3,12 +3,12 @@ from pyspark.sql import functions as F
 
 
 @dp.materialized_view(
-    name="gold_dev.top_products_revenue",
+    name="gold_dev.agg_revenue_top_products",
     comment="Revenue and units sold per product, ranked by revenue"
 )
 def gold_top_products_revenue():
-    lines = spark.read.table("workspace.silver_dev.sales_order_lines")
-    products = spark.read.table("workspace.silver_dev.products")
+    lines = spark.read.table("workspace.silver_dev.fct_sales_order_lines")
+    products = spark.read.table("workspace.silver_dev.dim_products_current")
 
     return (
         lines

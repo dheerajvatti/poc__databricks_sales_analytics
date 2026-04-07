@@ -20,7 +20,7 @@ table_schema = StructType([
 
 
 @dp.table(
-    name="silver_dev.sales_order_lines",
+    name="silver_dev.fct_sales_order_lines",
     schema=table_schema
 )
 @dp.expect_or_drop("valid_order_id_not_null", "order_id IS NOT NULL")

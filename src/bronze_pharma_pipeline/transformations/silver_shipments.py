@@ -21,7 +21,7 @@ table_schema = StructType([
 
 
 @dp.table(
-    name="silver_dev.shipments",
+    name="silver_dev.fct_shipments",
     schema=table_schema
 )
 @dp.expect_or_drop("valid_shipment_id_not_null", "shipment_id IS NOT NULL")

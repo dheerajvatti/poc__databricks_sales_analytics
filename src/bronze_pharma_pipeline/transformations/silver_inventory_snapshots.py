@@ -19,7 +19,7 @@ table_schema = StructType([
 
 
 @dp.table(
-    name="silver_dev.inventory_snapshots",
+    name="silver_dev.fct_inventory_snapshots",
     schema=table_schema
 )
 @dp.expect_or_drop("valid_snapshot_id_not_null", "snapshot_id IS NOT NULL")

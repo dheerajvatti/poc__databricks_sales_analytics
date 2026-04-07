@@ -22,13 +22,13 @@ from pyspark.sql import functions as F
 
 
 @dp.temporary_view()
-def distribution_centers_scd2_source():
+def customers_scd2_source():
     bronze_df = spark.readStream.table("workspace.bronze_dev.datawarehouse_raw")
 
-    return transform_distribution_centers_scd2_source_from_bronze_df(bronze_df)
+    return transform_customers_scd2_source_from_bronze_df(bronze_df)
 
 
-def transform_distribution_centers_scd2_source_from_bronze_df(bronze_df):
+def transform_customers_scd2_source_from_bronze_df(bronze_df):
     """Pure transform for SCD2 source rows, reused by unit tests."""
 
     return (
@@ -38,38 +38,38 @@ def transform_distribution_centers_scd2_source_from_bronze_df(bronze_df):
                 "_ingested_at",
                 "_ingest_date",
                 "_source_file",
-                "inline_outer(value.distribution_centers)"
+                "inline_outer(value.customers)"
             )
             .select(
-                F.col("dc_id"),
-                F.col("dc_name"),
+                F.trim(F.col("customer_id")).alias("customer_id"),
+                F.trim(F.col("customer_name")).alias("customer_name"),
+                F.col("customer_type"),
                 F.col("region"),
+                F.col("credit_limit").cast("double").alias("credit_limit"),
+                F.col("is_340b_eligible"),
                 F.col("address.street").alias("address_street"),
                 F.col("address.city").alias("address_city"),
                 F.col("address.state").alias("address_state"),
                 F.col("address.postal_code").alias("address_postal_code"),
                 F.col("address.country").alias("address_country"),
-                F.col("temperature_zones"),
                 F.col("bronze_record_key"),
                 F.col("_ingested_at"),
                 F.col("_ingest_date"),
                 F.col("_source_file")
             )
-            .withColumn("dc_id", F.trim(F.col("dc_id")))
-            .withColumn("dc_name", F.trim(F.col("dc_name")))
-            .filter(F.col("dc_id").isNotNull())
-            .filter(F.col("dc_id") != "")
+            .filter(F.col("customer_id").isNotNull())
+            .filter(F.col("customer_id") != "")
     )
 
 
 # Target SCD2 history table. AUTO CDC manages __START_AT and __END_AT columns.
-dp.create_streaming_table("silver_dev.dim_distribution_centers")
+dp.create_streaming_table("silver_dev.dim_customers_hist")
 
 
 dp.create_auto_cdc_flow(
-    target="silver_dev.dim_distribution_centers",
-    source="distribution_centers_scd2_source",
-    keys=["dc_id"],
+    target="silver_dev.dim_customers_hist",
+    source="customers_scd2_source",
+    keys=["customer_id"],
     sequence_by=F.col("_ingested_at"),
     stored_as_scd_type=2,
     except_column_list=["bronze_record_key", "_ingested_at", "_ingest_date", "_source_file"]

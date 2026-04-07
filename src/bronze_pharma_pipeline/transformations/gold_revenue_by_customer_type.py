@@ -3,13 +3,13 @@ from pyspark.sql import functions as F
 
 
 @dp.materialized_view(
-    name="gold_dev.revenue_by_customer_type",
+    name="gold_dev.agg_revenue_by_customer_type",
     comment="Revenue aggregated by customer type"
 )
 def gold_revenue_by_customer_type():
-    orders = spark.read.table("workspace.silver_dev.sales_orders")
-    lines = spark.read.table("workspace.silver_dev.sales_order_lines")
-    customers = spark.read.table("workspace.silver_dev.customers")
+    orders = spark.read.table("workspace.silver_dev.fct_sales_orders")
+    lines = spark.read.table("workspace.silver_dev.fct_sales_order_lines")
+    customers = spark.read.table("workspace.silver_dev.dim_customers_current")
 
     return (
         lines

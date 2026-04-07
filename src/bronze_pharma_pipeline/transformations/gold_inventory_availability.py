@@ -3,13 +3,13 @@ from pyspark.sql import functions as F
 
 
 @dp.materialized_view(
-    name="gold_dev.inventory_availability",
+    name="gold_dev.agg_inventory_availability_by_distribution_center",
     comment="Available (on-hand minus reserved) packs by DC and product"
 )
 def gold_inventory_availability():
-    snapshots = spark.read.table("workspace.silver_dev.inventory_snapshots")
-    dcs = spark.read.table("workspace.silver_dev.distribution_centers")
-    products = spark.read.table("workspace.silver_dev.products")
+    snapshots = spark.read.table("workspace.silver_dev.fct_inventory_snapshots")
+    dcs = spark.read.table("workspace.silver_dev.dim_distribution_centers_current")
+    products = spark.read.table("workspace.silver_dev.dim_products_current")
 
     return (
         snapshots

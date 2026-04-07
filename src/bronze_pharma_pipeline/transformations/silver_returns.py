@@ -20,7 +20,7 @@ table_schema = StructType([
 
 
 @dp.table(
-    name="silver_dev.returns",
+    name="silver_dev.fct_returns",
     schema=table_schema
 )
 @dp.expect_or_drop("valid_return_id_not_null", "return_id IS NOT NULL")

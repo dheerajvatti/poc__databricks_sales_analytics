@@ -3,12 +3,12 @@ from pyspark.sql import functions as F
 
 
 @dp.materialized_view(
-    name="gold_dev.return_analysis",
+    name="gold_dev.agg_returns_by_reason",
     comment="Return volume, credit, and rate by reason code"
 )
 def gold_return_analysis():
-    returns = spark.read.table("workspace.silver_dev.returns")
-    lines = spark.read.table("workspace.silver_dev.sales_order_lines")
+    returns = spark.read.table("workspace.silver_dev.fct_returns")
+    lines = spark.read.table("workspace.silver_dev.fct_sales_order_lines")
 
     total_sold = lines.agg(F.sum("ordered_qty_packs").alias("total_sold_packs")).collect()[0]["total_sold_packs"]
 

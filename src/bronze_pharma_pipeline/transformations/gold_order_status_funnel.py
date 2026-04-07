@@ -3,11 +3,11 @@ from pyspark.sql import functions as F
 
 
 @dp.materialized_view(
-    name="gold_dev.order_status_funnel",
+    name="gold_dev.agg_orders_by_status",
     comment="Order count and revenue by status (funnel view)"
 )
 def gold_order_status_funnel():
-    orders = spark.read.table("workspace.silver_dev.sales_orders")
+    orders = spark.read.table("workspace.silver_dev.fct_sales_orders")
 
     total_orders = orders.count()
 

@@ -3,12 +3,12 @@ from pyspark.sql import functions as F
 
 
 @dp.materialized_view(
-    name="gold_dev.monthly_revenue_trend",
+    name="gold_dev.agg_revenue_monthly",
     comment="Monthly revenue and order count trend"
 )
 def gold_monthly_revenue_trend():
-    orders = spark.read.table("workspace.silver_dev.sales_orders")
-    lines = spark.read.table("workspace.silver_dev.sales_order_lines")
+    orders = spark.read.table("workspace.silver_dev.fct_sales_orders")
+    lines = spark.read.table("workspace.silver_dev.fct_sales_order_lines")
 
     monthly_revenue = (
         lines

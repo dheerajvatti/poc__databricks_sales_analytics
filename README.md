@@ -56,15 +56,19 @@ This table stores the raw nested JSON payload with ingestion metadata.
 
 These tables flatten and validate the nested business entities:
 
-- `workspace.silver_dev.manufacturers`
-- `workspace.silver_dev.products`
-- `workspace.silver_dev.distribution_centers`
-- `workspace.silver_dev.customers`
-- `workspace.silver_dev.sales_orders`
-- `workspace.silver_dev.sales_order_lines`
-- `workspace.silver_dev.inventory_snapshots`
-- `workspace.silver_dev.shipments`
-- `workspace.silver_dev.returns`
+- `workspace.silver_dev.dim_manufacturers`
+- `workspace.silver_dev.dim_manufacturers_current`
+- `workspace.silver_dev.dim_products`
+- `workspace.silver_dev.dim_products_current`
+- `workspace.silver_dev.dim_distribution_centers`
+- `workspace.silver_dev.dim_distribution_centers_current`
+- `workspace.silver_dev.dim_customers_hist`
+- `workspace.silver_dev.dim_customers_current`
+- `workspace.silver_dev.fct_sales_orders`
+- `workspace.silver_dev.fct_sales_order_lines`
+- `workspace.silver_dev.fct_inventory_snapshots`
+- `workspace.silver_dev.fct_shipments`
+- `workspace.silver_dev.fct_returns`
 
 Common Silver patterns used in this project:
 
@@ -77,14 +81,14 @@ Common Silver patterns used in this project:
 
 These materialized views provide pre-aggregated analytics for BI consumption:
 
-- `workspace.gold_dev.kpi_summary`
-- `workspace.gold_dev.monthly_revenue_trend`
-- `workspace.gold_dev.revenue_by_therapeutic_area`
-- `workspace.gold_dev.revenue_by_customer_type`
-- `workspace.gold_dev.order_status_funnel`
-- `workspace.gold_dev.inventory_availability`
-- `workspace.gold_dev.return_analysis`
-- `workspace.gold_dev.top_products_revenue`
+- `workspace.gold_dev.agg_kpi_summary`
+- `workspace.gold_dev.agg_revenue_monthly`
+- `workspace.gold_dev.agg_revenue_by_therapeutic_area`
+- `workspace.gold_dev.agg_revenue_by_customer_type`
+- `workspace.gold_dev.agg_orders_by_status`
+- `workspace.gold_dev.agg_inventory_availability_by_distribution_center`
+- `workspace.gold_dev.agg_returns_by_reason`
+- `workspace.gold_dev.agg_revenue_top_products`
 
 ## Dashboard
 
@@ -130,6 +134,28 @@ databricks bundle run --target dev bronze_pharma_pipeline --full-refresh-all
 - Transformation files live under [src/bronze_pharma_pipeline/transformations](/Users/dheerajvatti/databricks_projects/poc_distrbution_analytics/src/bronze_pharma_pipeline/transformations)
 - The pipeline automatically includes all transformation files via a glob pattern
 - Local-only development artifacts are ignored via [.gitignore](/Users/dheerajvatti/databricks_projects/poc_distrbution_analytics/.gitignore)
+
+## Mock Real-Time Sales Orders Stream
+
+Use the streaming mock utility to continuously drop sales-order micro-batch files into the Bronze landing folder watched by Auto Loader.
+
+Run from the repository root:
+
+```bash
+python3 utilities/mock_sales_orders_stream.py \
+	--seed-file bronze_dev/landing/pharma_distribution_landing.json \
+	--output-dir bronze_dev/landing \
+	--batches 50 \
+	--orders-per-batch 2 \
+	--interval-seconds 2
+```
+
+What this does:
+
+- writes one JSON file per batch in the same schema expected by Bronze
+- emits only `sales_orders` records in each file (other arrays are empty)
+- uses realistic DC, customer, and product references from your seed landing file
+- creates unique real-time order IDs (`SO-RT-...`) per emitted order
 
 ## Next Improvements
 

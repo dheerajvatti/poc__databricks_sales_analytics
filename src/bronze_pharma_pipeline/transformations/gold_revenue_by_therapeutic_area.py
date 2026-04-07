@@ -3,12 +3,12 @@ from pyspark.sql import functions as F
 
 
 @dp.materialized_view(
-    name="gold_dev.revenue_by_therapeutic_area",
+    name="gold_dev.agg_revenue_by_therapeutic_area",
     comment="Revenue aggregated by therapeutic area"
 )
 def gold_revenue_by_therapeutic_area():
-    lines = spark.read.table("workspace.silver_dev.sales_order_lines")
-    products = spark.read.table("workspace.silver_dev.products")
+    lines = spark.read.table("workspace.silver_dev.fct_sales_order_lines")
+    products = spark.read.table("workspace.silver_dev.dim_products_current")
 
     return (
         lines
