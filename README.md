@@ -86,6 +86,44 @@ Conformed time join keys:
 - `fct_shipments.ship_date_key` -> `dim_time.date_key`
 - `fct_returns.date_key` -> `dim_time.date_key`
 
+### Time-Based Metrics
+
+Pre-built metric views are available for time-based reporting and analytics:
+
+- `workspace.silver_dev.metrics_daily_revenue` — Daily revenue by calendar date with order and line-item counts
+- `workspace.silver_dev.metrics_monthly_revenue` — Monthly revenue with fiscal calendar, AOV, and fulfillment rates
+- `workspace.silver_dev.metrics_fiscal_ytd_revenue` — Fiscal year-to-date revenue accumulation by fiscal period
+- `workspace.silver_dev.metrics_inventory_by_date` — Daily inventory levels (on-hand, reserved, in-transit)
+- `workspace.silver_dev.metrics_shipments_by_date` — Daily shipment volume by status and customer reach
+- `workspace.silver_dev.metrics_returns_by_date` — Daily returns by reason code and credit amount
+
+**Creating Metrics**
+
+Metric views are defined in SQL in [resources/metrics_views.sql](resources/metrics_views.sql).
+
+Deploy them to your workspace:
+
+```bash
+databricks sql --warehouse-id YOUR_WAREHOUSE_ID < resources/metrics_views.sql
+```
+
+**Querying Metrics**
+
+All measures use the `MEASURE()` function wrapper:
+
+```sql
+SELECT
+  `Calendar Date`,
+  `Month`,
+  MEASURE(`Revenue`) AS daily_revenue,
+  MEASURE(`Order Count`) AS order_count,
+  MEASURE(`Average Line Amount`) AS avg_line_amount
+FROM workspace.silver_dev.metrics_daily_revenue
+WHERE YEAR(`Calendar Date`) = 2026
+GROUP BY ALL
+ORDER BY `Calendar Date` DESC;
+```
+
 ### Gold
 
 These materialized views provide pre-aggregated analytics for BI consumption:
