@@ -1,15 +1,18 @@
 from pyspark import pipelines as dp
 from pyspark.sql import functions as F
+from _env_config import get_config
+
+_c = get_config()
 
 
 @dp.materialized_view(
-    name="gold_dev.agg_inventory_availability_by_distribution_center",
+    name=f"{_c['gold_schema']}.agg_inventory_availability_by_distribution_center",
     comment="Available (on-hand minus reserved) packs by DC and product"
 )
 def gold_inventory_availability():
-    snapshots = spark.read.table("workspace.silver_dev.fct_inventory_snapshots")
-    dcs = spark.read.table("workspace.silver_dev.dim_distribution_centers_current")
-    products = spark.read.table("workspace.silver_dev.dim_products_current")
+    snapshots = spark.read.table(f"{_c['catalog']}.{_c['silver_schema']}.fct_inventory_snapshots")
+    dcs = spark.read.table(f"{_c['catalog']}.{_c['silver_schema']}.dim_distribution_centers_current")
+    products = spark.read.table(f"{_c['catalog']}.{_c['silver_schema']}.dim_products_current")
 
     return (
         snapshots

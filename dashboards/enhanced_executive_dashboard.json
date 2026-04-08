@@ -1,29 +1,79 @@
 {
+  "datasets": [
+    {
+      "name": "ds_ytd_kpi",
+      "displayName": "YTD KPI",
+      "queryLines": [
+        "SELECT `Fiscal Year Label` AS fiscal_year_label, `Fiscal Month` AS fiscal_month, MEASURE(`YTD Revenue`) AS ytd_revenue, MEASURE(`YTD Order Count`) AS ytd_orders, MEASURE(`YTD Average Order Value`) AS ytd_aov FROM workspace.silver_dev.metrics_fiscal_ytd_revenue GROUP BY ALL ORDER BY `Fiscal Year Label` DESC, `Fiscal Month` DESC LIMIT 1"
+      ]
+    },
+    {
+      "name": "ds_daily_revenue",
+      "displayName": "Daily Revenue Trend",
+      "queryLines": [
+        "SELECT `Calendar Date` AS calendar_date, MEASURE(`Revenue`) AS revenue, MEASURE(`Order Count`) AS order_count FROM workspace.silver_dev.metrics_daily_revenue WHERE `Calendar Date` >= date_sub(current_date(), 90) GROUP BY ALL ORDER BY `Calendar Date`"
+      ]
+    },
+    {
+      "name": "ds_monthly_metrics",
+      "displayName": "Monthly Metrics",
+      "queryLines": [
+        "SELECT `Month Label` AS month_label, `Fiscal Quarter` AS fiscal_quarter, MEASURE(`Revenue`) AS revenue, MEASURE(`Order Count`) AS order_count, MEASURE(`Average Order Value`) AS avg_order_value, MEASURE(`Fulfillment Rate`) AS fulfillment_rate FROM workspace.silver_dev.metrics_monthly_revenue WHERE `Fiscal Year` >= year(current_date()) - 1 GROUP BY ALL ORDER BY `Month Label`"
+      ]
+    },
+    {
+      "name": "ds_returns",
+      "displayName": "Returns Summary",
+      "queryLines": [
+        "SELECT `Year Month` AS year_month, `Return Reason` AS return_reason, MEASURE(`Return Count`) AS return_count, MEASURE(`Return Amount`) AS return_amount FROM workspace.silver_dev.metrics_returns_by_date WHERE `Fiscal Year` >= year(current_date()) - 1 GROUP BY ALL ORDER BY return_count DESC, `Year Month` DESC"
+      ]
+    }
+  ],
   "pages": [
     {
       "name": "executive_summary",
-      "pageType": "PAGE_TYPE_CANVAS",
       "displayName": "Executive Summary",
-      "widgets": [
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layout": [
         {
           "widget": {
-            "name": "title_section",
-            "textbox_spec": "# Pharma Distribution Analytics Dashboard\n## Real-time Executive Metrics"
+            "name": "title",
+            "textbox_spec": "# Pharma Distribution Executive Dashboard"
           },
-          "position": {"x": 0, "y": 0, "width": 6, "height": 1}
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 6,
+            "height": 1
+          }
         },
         {
           "widget": {
-            "name": "kpi_total_revenue",
+            "name": "subtitle",
+            "textbox_spec": "Metric-view powered executive reporting using only workspace.silver_dev.metrics_* datasets"
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 6,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "kpi_ytd_revenue",
             "queries": [
               {
                 "name": "main_query",
                 "query": {
-                  "datasetName": "revenue",
+                  "datasetName": "ds_ytd_kpi",
                   "fields": [
-                    {"name": "total_revenue", "expression": "SUM(amount)"}
+                    {
+                      "name": "ytd_revenue",
+                      "expression": "`ytd_revenue`"
+                    }
                   ],
-                  "disaggregated": false
+                  "disaggregated": true
                 }
               }
             ],
@@ -32,28 +82,43 @@
               "widgetType": "counter",
               "encodings": {
                 "value": {
-                  "fieldName": "total_revenue",
-                  "displayName": "Total Revenue",
-                  "numberFormatSpec": {"formatType": "CURRENCY", "currencyCode": "USD", "precision": 0}
+                  "fieldName": "ytd_revenue",
+                  "displayName": "YTD Revenue",
+                  "numberFormatSpec": {
+                    "formatType": "CURRENCY",
+                    "currencyCode": "USD",
+                    "precision": 0
+                  }
                 }
               },
-              "frame": {"showTitle": true, "title": "Total Revenue (All Time)"}
+              "frame": {
+                "showTitle": true,
+                "title": "Current Fiscal YTD Revenue"
+              }
             }
           },
-          "position": {"x": 0, "y": 1, "width": 2, "height": 2}
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 2,
+            "height": 3
+          }
         },
         {
           "widget": {
-            "name": "kpi_total_orders",
+            "name": "kpi_ytd_orders",
             "queries": [
               {
                 "name": "main_query",
                 "query": {
-                  "datasetName": "orders",
+                  "datasetName": "ds_ytd_kpi",
                   "fields": [
-                    {"name": "order_count", "expression": "COUNT(DISTINCT order_id)"}
+                    {
+                      "name": "ytd_orders",
+                      "expression": "`ytd_orders`"
+                    }
                   ],
-                  "disaggregated": false
+                  "disaggregated": true
                 }
               }
             ],
@@ -61,25 +126,39 @@
               "version": 2,
               "widgetType": "counter",
               "encodings": {
-                "value": {"fieldName": "order_count", "displayName": "Total Orders"}
+                "value": {
+                  "fieldName": "ytd_orders",
+                  "displayName": "YTD Orders"
+                }
               },
-              "frame": {"showTitle": true, "title": "Total Orders"}
+              "frame": {
+                "showTitle": true,
+                "title": "Current Fiscal YTD Orders"
+              }
             }
           },
-          "position": {"x": 2, "y": 1, "width": 2, "height": 2}
+          "position": {
+            "x": 2,
+            "y": 2,
+            "width": 2,
+            "height": 3
+          }
         },
         {
           "widget": {
-            "name": "kpi_active_shipments",
+            "name": "kpi_ytd_aov",
             "queries": [
               {
                 "name": "main_query",
                 "query": {
-                  "datasetName": "shipments",
+                  "datasetName": "ds_ytd_kpi",
                   "fields": [
-                    {"name": "shipment_count", "expression": "COUNT(DISTINCT shipment_id)"}
+                    {
+                      "name": "ytd_aov",
+                      "expression": "`ytd_aov`"
+                    }
                   ],
-                  "disaggregated": false
+                  "disaggregated": true
                 }
               }
             ],
@@ -87,36 +166,48 @@
               "version": 2,
               "widgetType": "counter",
               "encodings": {
-                "value": {"fieldName": "shipment_count", "displayName": "Total Shipments"}
+                "value": {
+                  "fieldName": "ytd_aov",
+                  "displayName": "YTD AOV",
+                  "numberFormatSpec": {
+                    "formatType": "CURRENCY",
+                    "currencyCode": "USD",
+                    "precision": 2
+                  }
+                }
               },
-              "frame": {"showTitle": true, "title": "Total Shipments"}
+              "frame": {
+                "showTitle": true,
+                "title": "Current Fiscal YTD AOV"
+              }
             }
           },
-          "position": {"x": 4, "y": 1, "width": 2, "height": 2}
+          "position": {
+            "x": 4,
+            "y": 2,
+            "width": 2,
+            "height": 3
+          }
         },
         {
           "widget": {
-            "name": "revenue_trend_90d",
+            "name": "chart_daily_revenue",
             "queries": [
               {
                 "name": "main_query",
                 "query": {
-                  "datasetName": "revenue_trend",
+                  "datasetName": "ds_daily_revenue",
                   "fields": [
-                    {"name": "order_date", "expression": "`order_date`"},
-                    {"name": "daily_revenue", "expression": "SUM(amount)"}
-                  ],
-                  "disaggregated": true,
-                  "filters": [
                     {
-                      "expression": "`order_date` >= DATE_SUB(CURRENT_DATE(), 90)"
+                      "name": "calendar_date",
+                      "expression": "`calendar_date`"
+                    },
+                    {
+                      "name": "revenue",
+                      "expression": "`revenue`"
                     }
                   ],
-                  "groupBy": [
-                    {
-                      "expression": "`order_date`"
-                    }
-                  ]
+                  "disaggregated": true
                 }
               }
             ],
@@ -125,187 +216,152 @@
               "widgetType": "line",
               "encodings": {
                 "x": {
-                  "fieldName": "order_date",
-                  "scale": {"type": "temporal"},
+                  "fieldName": "calendar_date",
+                  "scale": {
+                    "type": "temporal"
+                  },
                   "displayName": "Date"
                 },
                 "y": {
-                  "fieldName": "daily_revenue",
-                  "scale": {"type": "quantitative"},
-                  "displayName": "Revenue ($)"
+                  "fieldName": "revenue",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "displayName": "Revenue"
                 }
               },
-              "frame": {"showTitle": true, "title": "Revenue Trend (Last 90 Days)"}
+              "frame": {
+                "showTitle": true,
+                "title": "Daily Revenue - Last 90 Days"
+              }
             }
           },
-          "position": {"x": 0, "y": 3, "width": 3, "height": 4}
+          "position": {
+            "x": 0,
+            "y": 6,
+            "width": 3,
+            "height": 5
+          }
         },
         {
           "widget": {
-            "name": "orders_vs_shipments",
+            "name": "chart_monthly_revenue",
             "queries": [
               {
                 "name": "main_query",
                 "query": {
-                  "datasetName": "orders_shipments",
+                  "datasetName": "ds_monthly_metrics",
                   "fields": [
-                    {"name": "order_date", "expression": "DATE_TRUNC('MONTH', `order_date`)"},
-                    {"name": "order_count", "expression": "COUNT(DISTINCT order_id)"},
-                    {"name": "shipment_count", "expression": "COUNT(DISTINCT shipment_id)"}
-                  ],
-                  "disaggregated": true,
-                  "filters": [
                     {
-                      "expression": "`order_date` >= DATE_SUB(CURRENT_DATE(), 180)"
+                      "name": "month_label",
+                      "expression": "`month_label`"
+                    },
+                    {
+                      "name": "revenue",
+                      "expression": "`revenue`"
                     }
                   ],
-                  "groupBy": [
-                    {
-                      "expression": "DATE_TRUNC('MONTH', `order_date`)"
-                    }
-                  ]
+                  "disaggregated": true
                 }
               }
             ],
             "spec": {
               "version": 3,
-              "widgetType": "line",
+              "widgetType": "bar",
               "encodings": {
                 "x": {
-                  "fieldName": "order_date",
-                  "scale": {"type": "temporal"},
+                  "fieldName": "month_label",
+                  "scale": {
+                    "type": "categorical"
+                  },
                   "displayName": "Month"
                 },
                 "y": {
-                  "fieldName": "order_count",
-                  "scale": {"type": "quantitative"},
-                  "displayName": "Count"
+                  "fieldName": "revenue",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "displayName": "Revenue"
                 }
               },
-              "frame": {"showTitle": true, "title": "Orders vs Shipments (6 Months)"}
-            }
-          },
-          "position": {"x": 3, "y": 3, "width": 3, "height": 4}
-        },
-        {
-          "widget": {
-            "name": "section_metrics",
-            "textbox_spec": "## Key Metrics by Category"
-          },
-          "position": {"x": 0, "y": 7, "width": 6, "height": 0.5}
-        },
-        {
-          "widget": {
-            "name": "avg_order_value",
-            "queries": [
-              {
-                "name": "main_query",
-                "query": {
-                  "datasetName": "aov",
-                  "fields": [
-                    {"name": "avg_value", "expression": "AVG(amount)"}
-                  ],
-                  "disaggregated": false
-                }
+              "frame": {
+                "showTitle": true,
+                "title": "Monthly Revenue"
               }
-            ],
-            "spec": {
-              "version": 2,
-              "widgetType": "counter",
-              "encodings": {
-                "value": {
-                  "fieldName": "avg_value",
-                  "displayName": "AOV",
-                  "numberFormatSpec": {"formatType": "CURRENCY", "currencyCode": "USD", "precision": 2}
-                }
-              },
-              "frame": {"showTitle": true, "title": "Average Order Value"}
             }
           },
-          "position": {"x": 0, "y": 7.5, "width": 1.5, "height": 2}
+          "position": {
+            "x": 3,
+            "y": 6,
+            "width": 3,
+            "height": 5
+          }
         },
         {
           "widget": {
-            "name": "on_hand_inventory",
+            "name": "table_returns",
             "queries": [
               {
                 "name": "main_query",
                 "query": {
-                  "datasetName": "inventory",
+                  "datasetName": "ds_returns",
                   "fields": [
-                    {"name": "on_hand_qty", "expression": "CAST(SUM(on_hand_quantity) AS LONG)"}
-                  ],
-                  "disaggregated": false
-                }
-              }
-            ],
-            "spec": {
-              "version": 2,
-              "widgetType": "counter",
-              "encodings": {
-                "value": {"fieldName": "on_hand_qty", "displayName": "Units"}
-              },
-              "frame": {"showTitle": true, "title": "On-Hand Inventory"}
-            }
-          },
-          "position": {"x": 1.5, "y": 7.5, "width": 1.5, "height": 2}
-        },
-        {
-          "widget": {
-            "name": "pending_shipments",
-            "queries": [
-              {
-                "name": "main_query",
-                "query": {
-                  "datasetName": "pending_ships",
-                  "fields": [
-                    {"name": "pending_count", "expression": "COUNT(DISTINCT shipment_id)"}
-                  ],
-                  "disaggregated": false,
-                  "filters": [
                     {
-                      "expression": "`shipment_status` = 'SHIPPED' OR `shipment_status` = 'IN_TRANSIT'"
+                      "name": "year_month",
+                      "expression": "`year_month`"
+                    },
+                    {
+                      "name": "return_reason",
+                      "expression": "`return_reason`"
+                    },
+                    {
+                      "name": "return_count",
+                      "expression": "`return_count`"
+                    },
+                    {
+                      "name": "return_amount",
+                      "expression": "`return_amount`"
                     }
-                  ]
-                }
-              }
-            ],
-            "spec": {
-              "version": 2,
-              "widgetType": "counter",
-              "encodings": {
-                "value": {"fieldName": "pending_count", "displayName": "Count"}
-              },
-              "frame": {"showTitle": true, "title": "In-Transit Shipments"}
-            }
-          },
-          "position": {"x": 3, "y": 7.5, "width": 1.5, "height": 2}
-        },
-        {
-          "widget": {
-            "name": "total_returns",
-            "queries": [
-              {
-                "name": "main_query",
-                "query": {
-                  "datasetName": "returns",
-                  "fields": [
-                    {"name": "return_count", "expression": "COUNT(DISTINCT return_id)"}
                   ],
-                  "disaggregated": false
+                  "disaggregated": true
                 }
               }
             ],
             "spec": {
               "version": 2,
-              "widgetType": "counter",
+              "widgetType": "table",
               "encodings": {
-                "value": {"fieldName": "return_count", "displayName": "Units"}
+                "columns": [
+                  {
+                    "fieldName": "year_month",
+                    "displayName": "Month"
+                  },
+                  {
+                    "fieldName": "return_reason",
+                    "displayName": "Return Reason"
+                  },
+                  {
+                    "fieldName": "return_count",
+                    "displayName": "Return Count"
+                  },
+                  {
+                    "fieldName": "return_amount",
+                    "displayName": "Return Amount"
+                  }
+                ]
               },
-              "frame": {"showTitle": true, "title": "Total Returns"}
+              "frame": {
+                "showTitle": true,
+                "title": "Returns Summary"
+              }
             }
           },
-          "position": {"x": 4.5, "y": 7.5, "width": 1.5, "height": 2}
+          "position": {
+            "x": 0,
+            "y": 10,
+            "width": 6,
+            "height": 5
+          }
         }
       ]
     }

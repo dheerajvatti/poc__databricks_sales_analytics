@@ -1,0 +1,25 @@
+resources:
+  jobs:
+    metric_views_setup_job:
+      name: "[${bundle.target}] metric_views_setup"
+      max_concurrent_runs: 1
+      environments:
+        - environment_key: default
+          spec:
+            environment_version: "2"
+            dependencies:
+              - databricks-sdk>=0.57.0
+      tasks:
+        - task_key: deploy_metric_views
+          environment_key: default
+          timeout_seconds: 1800
+          spark_python_task:
+            python_file: ../src/setup/deploy_metric_views.py
+            source: WORKSPACE
+            parameters:
+              - --catalog
+              - ${var.catalog}
+              - --silver-schema
+              - ${var.silver_schema}
+              - --warehouse-id
+              - ${var.warehouse_id}

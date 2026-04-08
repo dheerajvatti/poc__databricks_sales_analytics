@@ -1,6 +1,9 @@
 from pyspark import pipelines as dp
 from pyspark.sql import functions as F
 from pyspark.sql.types import DateType, IntegerType, StringType, StructField, StructType, TimestampType
+from _env_config import get_config
+
+_c = get_config()
 
 
 table_schema = StructType([
@@ -20,13 +23,13 @@ table_schema = StructType([
 
 
 @dp.table(
-    name="silver_dev.fct_inventory_snapshots",
+    name=f"{_c['silver_schema']}.fct_inventory_snapshots",
     schema=table_schema
 )
 @dp.expect_or_drop("valid_snapshot_id_not_null", "snapshot_id IS NOT NULL")
 @dp.expect_or_drop("valid_snapshot_id_not_empty", "snapshot_id <> ''")
 def silver_inventory_snapshots():
-    bronze_df = spark.readStream.table("workspace.bronze_dev.datawarehouse_raw")
+    bronze_df = spark.readStream.table(f"{_c['catalog']}.{_c['bronze_schema']}.datawarehouse_raw")
 
     exploded_df = (
         bronze_df

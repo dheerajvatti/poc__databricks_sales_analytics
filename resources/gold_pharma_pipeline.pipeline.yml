@@ -1,0 +1,15 @@
+resources:
+  pipelines:
+    gold_pharma_pipeline:
+      name: "[${bundle.target}] gold_pharma_pipeline"
+      catalog: ${var.catalog}
+      schema: ${var.gold_schema}
+      serverless: true
+      root_path: ../src/gold_pharma_pipeline
+      configuration:
+        catalog: ${var.catalog}
+        silver_schema: ${var.silver_schema}
+        gold_schema: ${var.gold_schema}
+      libraries:
+        - glob:
+            include: ../src/gold_pharma_pipeline/gold_dashboard_views.py

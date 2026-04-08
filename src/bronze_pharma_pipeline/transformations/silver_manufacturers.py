@@ -19,11 +19,14 @@ except ImportError:
     dp = _DPStub()
 
 from pyspark.sql import functions as F
+from _env_config import get_config
+
+_c = get_config()
 
 
 @dp.temporary_view()
 def manufacturers_scd2_source():
-    bronze_df = spark.readStream.table("workspace.bronze_dev.datawarehouse_raw")
+    bronze_df = spark.readStream.table(f"{_c['catalog']}.{_c['bronze_schema']}.datawarehouse_raw")
 
     return transform_manufacturers_scd2_source_from_bronze_df(bronze_df)
 
@@ -59,11 +62,11 @@ def transform_manufacturers_scd2_source_from_bronze_df(bronze_df):
 
 
 # Target SCD2 history table. AUTO CDC manages __START_AT and __END_AT columns.
-dp.create_streaming_table("silver_dev.dim_manufacturers")
+dp.create_streaming_table(f"{_c['silver_schema']}.dim_manufacturers")
 
 
 dp.create_auto_cdc_flow(
-    target="silver_dev.dim_manufacturers",
+    target=f"{_c['silver_schema']}.dim_manufacturers",
     source="manufacturers_scd2_source",
     keys=["manufacturer_id"],
     sequence_by=F.col("_ingested_at"),

@@ -7,14 +7,35 @@ include:
 variables:
   catalog:
     description: Unity Catalog name for pipeline deployment
-  schema:
-    description: Schema name for bronze table
+  bronze_schema:
+    description: Schema name for bronze tables
+  silver_schema:
+    description: Schema name for silver tables
+  gold_schema:
+    description: Schema name for gold tables
+  warehouse_id:
+    description: SQL warehouse ID for dashboard execution
 
 targets:
   dev:
+    default: true
     mode: development
     workspace:
       host: https://dbc-986cc365-9b2e.cloud.databricks.com
     variables:
       catalog: workspace
-      schema: bronze_dev
+      bronze_schema: bronze_dev
+      silver_schema: silver_dev
+      gold_schema: gold_dev
+      warehouse_id: 620ef1f894b756f6
+  prod:
+    mode: production
+    workspace:
+      host: https://dbc-986cc365-9b2e.cloud.databricks.com
+      root_path: /Workspace/Users/dheerajvatti@gmail.com/.bundle/${bundle.name}/${bundle.target}
+    variables:
+      catalog: workspace_prod
+      bronze_schema: bronze
+      silver_schema: silver
+      gold_schema: gold
+      warehouse_id: 620ef1f894b756f6

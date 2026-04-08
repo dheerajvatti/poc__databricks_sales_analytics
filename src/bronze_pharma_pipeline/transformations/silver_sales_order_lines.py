@@ -1,6 +1,9 @@
 from pyspark import pipelines as dp
 from pyspark.sql import functions as F
 from pyspark.sql.types import BooleanType, DateType, DoubleType, IntegerType, StringType, StructField, StructType, TimestampType
+from _env_config import get_config
+
+_c = get_config()
 
 
 table_schema = StructType([
@@ -21,26 +24,17 @@ table_schema = StructType([
 
 
 @dp.table(
-    name="silver_dev.fct_sales_order_lines",
+    name=f"{_c['silver_schema']}.fct_sales_order_lines",
     schema=table_schema
 )
 @dp.expect_or_drop("valid_order_id_not_null", "order_id IS NOT NULL")
 @dp.expect_or_drop("valid_line_id_not_null", "line_id IS NOT NULL")
 def silver_sales_order_lines():
-    bronze_df = spark.readStream.table("workspace.bronze_dev.datawarehouse_raw")
+    bronze_df = spark.readStream.table(f"{_c['catalog']}.{_c['bronze_schema']}.sales_orders_raw")
 
-    # Step 1: expand sales_orders array — each row is one order with a lines array column
-    orders_df = bronze_df.selectExpr(
-        "key as bronze_record_key",
-        "_ingested_at",
-        "_ingest_date",
-        "_source_file",
-        "inline_outer(value.sales_orders)"
-    )
-
-    # Step 2: expand lines array — each row is one order line, carrying order_id forward
+    # Expand lines array — each row is one order line, carrying order_id forward
     exploded_df = (
-        orders_df
+        bronze_df
             .selectExpr(
                 "bronze_record_key",
                 "_ingested_at",

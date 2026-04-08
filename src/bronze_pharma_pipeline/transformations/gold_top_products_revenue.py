@@ -1,14 +1,17 @@
 from pyspark import pipelines as dp
 from pyspark.sql import functions as F
+from _env_config import get_config
+
+_c = get_config()
 
 
 @dp.materialized_view(
-    name="gold_dev.agg_revenue_top_products",
+    name=f"{_c['gold_schema']}.agg_revenue_top_products",
     comment="Revenue and units sold per product, ranked by revenue"
 )
 def gold_top_products_revenue():
-    lines = spark.read.table("workspace.silver_dev.fct_sales_order_lines")
-    products = spark.read.table("workspace.silver_dev.dim_products_current")
+    lines = spark.read.table(f"{_c['catalog']}.{_c['silver_schema']}.fct_sales_order_lines")
+    products = spark.read.table(f"{_c['catalog']}.{_c['silver_schema']}.dim_products_current")
 
     return (
         lines

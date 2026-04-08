@@ -12,6 +12,9 @@ except ImportError:
 
 from pyspark.sql import functions as F
 from pyspark.sql.types import BooleanType, StringType, StructField, StructType, TimestampType
+from _env_config import get_config
+
+_c = get_config()
 
 
 table_schema = StructType([
@@ -38,9 +41,9 @@ def project_current_manufacturers_from_scd2(scd2_df):
 
 
 @dp.materialized_view(
-    name="silver_dev.dim_manufacturers_current",
+    name=f"{_c['silver_schema']}.dim_manufacturers_current",
     schema=table_schema
 )
 def silver_manufacturers_current():
-    scd2_df = spark.read.table("workspace.silver_dev.dim_manufacturers")
+    scd2_df = spark.read.table(f"{_c['catalog']}.{_c['silver_schema']}.dim_manufacturers")
     return project_current_manufacturers_from_scd2(scd2_df)

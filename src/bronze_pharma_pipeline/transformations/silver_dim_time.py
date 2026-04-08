@@ -1,5 +1,8 @@
 from pyspark import pipelines as dp
 from pyspark.sql import functions as F
+from _env_config import get_config
+
+_c = get_config()
 
 
 # Configurable boundaries for pre-materialized reporting dates.
@@ -9,7 +12,7 @@ FISCAL_START_MONTH = 1
 
 
 @dp.materialized_view(
-    name="silver_dev.dim_time",
+    name=f"{_c['silver_schema']}.dim_time",
     comment="Conformed date dimension for reporting with calendar and fiscal attributes",
 )
 def silver_dim_time():

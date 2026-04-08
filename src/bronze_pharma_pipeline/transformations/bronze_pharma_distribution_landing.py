@@ -1,6 +1,9 @@
 from pyspark import pipelines as dp
 from pyspark.sql import functions as F
 from pyspark.sql.types import ArrayType, BooleanType, DateType, FloatType, IntegerType, StringType, StructField, StructType, TimestampType
+from _env_config import get_config
+
+_c = get_config()
 
 payload_schema = StructType([
     StructField("manufacturers", ArrayType(StructType([
@@ -129,7 +132,7 @@ def bronze_pharma_distribution_landing():
             .option("multiline", "true")
             .option("rescuedDataColumn", "_rescued_data")
             .schema(source_schema)
-            .load("/Volumes/workspace/bronze_dev/landing")
+            .load(f"/Volumes/{_c['catalog']}/{_c['bronze_schema']}/landing")
             .withColumn("_ingested_at", F.current_timestamp())
             .withColumn("_ingest_date", F.to_date("_ingested_at"))
             .withColumn("_source_file", F.col("_metadata.file_path"))

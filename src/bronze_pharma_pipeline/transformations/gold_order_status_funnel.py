@@ -1,13 +1,16 @@
 from pyspark import pipelines as dp
 from pyspark.sql import functions as F
+from _env_config import get_config
+
+_c = get_config()
 
 
 @dp.materialized_view(
-    name="gold_dev.agg_orders_by_status",
+    name=f"{_c['gold_schema']}.agg_orders_by_status",
     comment="Order count and revenue by status (funnel view)"
 )
 def gold_order_status_funnel():
-    orders = spark.read.table("workspace.silver_dev.fct_sales_orders")
+    orders = spark.read.table(f"{_c['catalog']}.{_c['silver_schema']}.fct_sales_orders")
 
     total_orders = orders.count()
 

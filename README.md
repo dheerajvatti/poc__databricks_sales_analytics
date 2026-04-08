@@ -113,12 +113,13 @@ Pre-built metric views are available for time-based reporting and analytics:
 
 **Creating Metrics**
 
-Metric views are defined in SQL in [resources/metrics_views.sql](resources/metrics_views.sql).
+Metric views are deployed through the bundle job `metric_views_setup_job`, which resolves catalog and schema names per target and executes the metric DDL on the configured SQL warehouse.
 
-Deploy them to your workspace:
+Deploy them with:
 
 ```bash
-databricks sql --warehouse-id YOUR_WAREHOUSE_ID < resources/metrics_views.sql
+databricks bundle run metric_views_setup_job -t dev
+databricks bundle run metric_views_setup_job -t prod
 ```
 
 **Querying Metrics**
@@ -150,6 +151,42 @@ These materialized views provide pre-aggregated analytics for BI consumption:
 - `workspace.gold_dev.agg_inventory_availability_by_distribution_center`
 - `workspace.gold_dev.agg_returns_by_reason`
 - `workspace.gold_dev.agg_revenue_top_products`
+
+Dashboard-facing gold views are deployed by the `gold_pharma_pipeline` DLT pipeline.
+
+## Sales Orders Ingestion Architecture
+
+The pipeline supports both continuous live ingestion and on-demand historical backfills for sales orders using two append flows that write into the same bronze target table.
+
+```mermaid
+flowchart TD
+	LIVE_SRC["Live Source Feed\nworkspace.bronze_dev.datawarehouse_raw"]
+	HIST_FILES["Historical Backfill Files\n/Volumes/workspace/bronze_dev/salesorders"]
+
+	LIVE_FLOW["append_flow: sales_orders_raw_live\nreadStream.table(...datawarehouse_raw)"]
+	HIST_FLOW["append_flow: sales_orders_raw_historical\nreadStream cloudFiles json"]
+
+	PROJ["Shared projection\n_project_sales_orders(...)\nparse + normalize + dedupe"]
+	BRONZE_SO["Bronze Streaming Table\nworkspace.bronze_dev.sales_orders_raw"]
+
+	SILVER_ORDERS["Silver Table\nworkspace.silver_dev.fct_sales_orders"]
+	SILVER_LINES["Silver Table\nworkspace.silver_dev.fct_sales_order_lines"]
+	GOLD_VIEWS["Gold Analytics Views\nworkspace.gold_dev.agg_*"]
+
+	LIVE_SRC --> LIVE_FLOW --> PROJ
+	HIST_FILES --> HIST_FLOW --> PROJ
+	PROJ --> BRONZE_SO
+	BRONZE_SO --> SILVER_ORDERS
+	BRONZE_SO --> SILVER_LINES
+	SILVER_ORDERS --> GOLD_VIEWS
+	SILVER_LINES --> GOLD_VIEWS
+```
+
+Operational notes:
+
+- Live and backfill data share the same bronze table contract.
+- Backfills are triggered by dropping files into the salesorders volume path.
+- Watermarking and deduplication are based on `_ingested_at` and `order_id`.
 
 ## Star Schema
 
