@@ -156,136 +156,95 @@ Dashboard-facing gold views are deployed by the `gold_pharma_pipeline` DLT pipel
 
 ## Solution Architecture
 
-End-to-end architecture covering ingestion, transformation, alerting, orchestration, and serving layers.
-
 ```mermaid
 flowchart TD
-    %% ── Deployment Layer ──────────────────────────────────────────
-    subgraph DAB["⚙️ Databricks Asset Bundle"]
+    %% ── Infrastructure ────────────────────────────────────────────
+    subgraph BUNDLE["⚙️ Infrastructure as Code  (Databricks Asset Bundle)"]
+        CONFIG["Environment Config\ndev / prod targets\nvariables: catalog, schemas,\nthresholds, alert recipients"]
+    end
+
+    %% ── Sources ───────────────────────────────────────────────────
+    subgraph SOURCES["📂 Data Sources  (Cloud Storage)"]
+        SRC1[Bulk Landing Files]
+        SRC2[Streaming / Incremental Files]
+    end
+
+    %% ── Ingestion & Conformation ──────────────────────────────────
+    subgraph INGEST["🔄 Ingestion & Conformation  (Serverless DLT Pipeline)"]
+        direction TB
+        BRONZE["Bronze Layer\nRaw streaming tables\nschema-on-read · deduplication"]
+        SILVER_D["Silver — Dimensions\nSCD Type 2 history\n+ current views for BI joins"]
+        SILVER_F["Silver — Facts\nCleansed & typed\ntransaction tables"]
+        KPI["Gold KPI Aggregates\nPre-joined analytical views\ndriving BI counters & charts"]
+        BRONZE --> SILVER_D & SILVER_F --> KPI
+    end
+
+    %% ── Dashboard Views ───────────────────────────────────────────
+    subgraph DASH_PIPE["🥇 Dashboard Materialized Views  (Serverless DLT Pipeline)"]
+        DASH_VIEWS["Purpose-built dashboard views\nRevenue · Inventory · Orders · Returns"]
+        BREACH["Business Rule View\nInventory breach detection\nSeverity scoring: CRITICAL / HIGH / MEDIUM\nConfigurable threshold via bundle variable"]
+    end
+
+    %% ── Semantic Layer ────────────────────────────────────────────
+    subgraph SEMANTIC["📐 Semantic / Metric Layer  (SQL Warehouse)"]
+        METRICS["Unity Catalog Metric Views\nGovernance-controlled KPI definitions\nReusable MEASURE() queries"]
+    end
+
+    %% ── Alerting ──────────────────────────────────────────────────
+    subgraph ALERTING["🚨 Data Quality Alerting  (Python Setup Script)"]
+        CHECK{Breach count\n≥ threshold?}
+        FAIL["Raise RuntimeError\n→ Job Failure signal"]
+        EMAIL["📧 Email Notification\nto configured recipients"]
+        OK["✅ Pass — no alert"]
+        CHECK -- Yes --> FAIL --> EMAIL
+        CHECK -- No  --> OK
+    end
+
+    %% ── Orchestration ─────────────────────────────────────────────
+    subgraph ORCH["🔀 Pipeline Orchestration Job"]
         direction LR
-        VARS["Bundle Variables\ncatalog · bronze/silver/gold schemas\nlow_inventory_threshold_packs\nalert_email · warehouse_id"]
-        TARGETS["Targets\ndev → workspace / *_dev schemas\nprod → workspace_prod / prod schemas"]
+        O1[Ingestion Pipeline]
+        O2[Dashboard Pipeline]
+        O3[Metric Views Deploy]
+        O4[Alert Check]
+        O1 --> O2 --> O4
+        O1 --> O3
+        O3 -.->|parallel branch| O4
     end
 
-    %% ── Raw Data ──────────────────────────────────────────────────
-    subgraph RAW["📂 Raw Data (Cloud Storage)"]
-        R1[Pharma Distribution\nLanding Files]
-        R2[Sales Orders\nRaw Files]
+    %% ── Serving ───────────────────────────────────────────────────
+    subgraph SERVING["📊 Serving Layer"]
+        AIBI["AI/BI Dashboard\nInteractive KPI & trend reporting"]
+        GENIE["Natural Language Queries\nGenie / SQL Warehouse"]
     end
 
-    %% ── Bronze DLT Pipeline ───────────────────────────────────────
-    subgraph BPIPE["🔴 Bronze + Silver + Gold KPI DLT Pipeline  (Serverless)"]
-        direction TB
-        subgraph BRZ["Bronze Layer"]
-            B1[bronze_pharma_distribution_landing]
-            B2[bronze_sales_orders_raw]
-        end
-        subgraph SIL["Silver Layer"]
-            direction LR
-            subgraph DIMS["Dimension Tables  (SCD2 + Current Views)"]
-                S1[dim_distribution_centers]
-                S2[dim_customers]
-                S3[dim_products]
-                S4[dim_manufacturers]
-                S5[dim_time]
-            end
-            subgraph FACTS["Fact Tables"]
-                F1[fct_sales_orders]
-                F2[fct_sales_order_lines]
-                F3[fct_inventory_snapshots]
-                F4[fct_returns]
-                F5[fct_shipments]
-            end
-        end
-        subgraph GKPI["Gold KPI Views"]
-            G1[gold_kpi_summary]
-            G2[gold_monthly_revenue_trend]
-            G3[gold_revenue_by_therapeutic_area]
-            G4[gold_revenue_by_customer_type]
-            G5[gold_top_products_revenue]
-            G6[gold_inventory_availability]
-            G7[gold_order_status_funnel]
-            G8[gold_return_analysis]
-        end
-        BRZ --> SIL --> GKPI
-    end
+    %% ── Storage ───────────────────────────────────────────────────
+    UC[("🗄️ Unity Catalog\nBronze · Silver · Gold schemas\nper environment")]
 
-    %% ── Gold Dashboard DLT Pipeline ───────────────────────────────
-    subgraph GPIPE["🥇 Gold Dashboard DLT Pipeline  (Serverless)"]
-        direction TB
-        GD1[dashboard_daily_revenue]
-        GD2[dashboard_monthly_revenue]
-        GD3[dashboard_inventory_availability]
-        GD4["dashboard_low_inventory_breaches\nseverity: CRITICAL · HIGH · MEDIUM\nthreshold: configurable via bundle var"]
-    end
-
-    %% ── Metric Views ───────────────────────────────────────────────
-    subgraph MV["📐 Unity Catalog Metric Views  (deploy_metric_views.py)"]
-        MV1[Metric View Definitions\nSQL Warehouse · Silver schema]
-    end
-
-    %% ── Alerting ───────────────────────────────────────────────────
-    subgraph ALERT["🚨 Low Inventory Alert  (check_low_inventory_breaches.py)"]
-        AL1{breach_rows ≥\nmin_breach_rows?}
-        AL2[Raise RuntimeError\n→ Job Failure]
-        AL3[📧 Email Notification\nalert_email recipient]
-        AL4[✅ No Alert]
-        AL1 -- Yes --> AL2 --> AL3
-        AL1 -- No --> AL4
-    end
-
-    %% ── Orchestration ──────────────────────────────────────────────
-    subgraph ORCH["🔀 Full Pipeline Orchestration Job  (on-demand · max 1 concurrent run)"]
-        T1[Task: run_bronze_pipeline]
-        T2[Task: run_gold_pipeline]
-        T3[Task: deploy_metric_views]
-        T4[Task: check_low_inventory_breaches]
-        T1 --> T2
-        T1 --> T3
-        T2 --> T4
-        T3 -.->|independent branch| T4
-    end
-
-    %% ── Dashboard ──────────────────────────────────────────────────
-    subgraph DASH["📊 AI/BI Pipeline Monitoring Dashboard"]
-        DB1[Revenue Trends]
-        DB2[Inventory Availability]
-        DB3[Order Status Funnel]
-        DB4[Return Analysis]
-        DB5[Low Inventory Breaches]
-    end
-
-    %% ── Unity Catalog ──────────────────────────────────────────────
-    UC["🗄️ Unity Catalog\ncatalog.bronze_schema\ncatalog.silver_schema\ncatalog.gold_schema"]
-
-    %% ── Flow connections ───────────────────────────────────────────
-    DAB -->|configures| BPIPE
-    DAB -->|configures| GPIPE
-    DAB -->|configures| ORCH
-    RAW --> BRZ
-    BPIPE -->|writes tables| UC
-    GPIPE -->|writes materialized views| UC
-    MV -->|registers metric views| UC
-    UC -->|reads silver facts| GPIPE
-    UC -->|reads gold breach view| ALERT
-    UC -->|reads gold + metric views| DASH
-    ORCH -->|runs| BPIPE
-    ORCH -->|runs| GPIPE
-    ORCH -->|runs| MV
-    ORCH -->|runs| ALERT
+    %% ── Connections ───────────────────────────────────────────────
+    BUNDLE -->|injects config into| INGEST & DASH_PIPE & ORCH
+    SOURCES --> BRONZE
+    INGEST -->|writes| UC
+    UC -->|Silver facts| DASH_PIPE
+    DASH_PIPE -->|writes| UC
+    UC -->|Silver facts| SEMANTIC
+    SEMANTIC -->|registers metric views| UC
+    UC -->|Gold breach view| ALERTING
+    UC -->|Gold + metric views| SERVING
+    ORCH -->|triggers| INGEST & DASH_PIPE & SEMANTIC & ALERTING
 ```
 
-### Layer Summary
+### How the Layers Connect
 
-| Layer | Components |
+| Stage | What happens |
 |---|---|
-| **Asset Bundle** | All config vars (catalog, schemas, thresholds, email), dev/prod targets |
-| **Bronze DLT Pipeline** | Raw ingestion → Silver SCD2 dims + fact tables → Gold KPI aggregates — one serverless DLT pipeline |
-| **Gold Dashboard DLT Pipeline** | Dashboard materialized views including `dashboard_low_inventory_breaches` with severity scoring |
-| **Metric Views Job** | Deploys Unity Catalog metric views via SQL warehouse for time-series KPI querying |
-| **Low Inventory Alert** | Python script queries breach table; raises `RuntimeError` to trigger job failure → email alert |
-| **Orchestration Job** | `bronze → (gold ‖ metric views) → low inventory alert` with parallel fan-out after bronze |
-| **AI/BI Dashboard** | Reads from gold layer: revenue, inventory, orders, returns, breach severity KPIs |
+| **Infrastructure** | Asset Bundle defines all config vars and dev/prod targets; one deploy command provisions everything |
+| **Ingestion & Conformation** | Raw files land in Bronze streaming tables → cleansed Silver dimensions (SCD2) and facts → pre-joined Gold KPI aggregates, all in one serverless DLT pipeline |
+| **Dashboard Views** | A second DLT pipeline reads Silver facts and produces purpose-built materialized views, including a breach detection view with severity scoring driven by a configurable threshold |
+| **Semantic Layer** | Unity Catalog Metric Views wrap Silver facts with governed KPI definitions queryable via `MEASURE()` |
+| **Alerting** | A Python setup script queries the breach view; if the count exceeds a threshold it raises a `RuntimeError` so the job fails and sends an email alert |
+| **Orchestration** | One job chains all stages: ingestion first, then dashboard pipeline and metric views in parallel, then the alert check at the end |
+| **Serving** | AI/BI dashboards and natural language Genie queries read directly from the Gold and metric view layers |
 
 ## Sales Orders Ingestion Architecture
 
